@@ -10,8 +10,8 @@ export default function EventList(props) {
           <div key={currentEvent.id}>
             <button className="event-select-button"
               onClick={() => props.handleSelectedIdChange(currentEvent.id)}>
-              Event: {currentEvent.description} 
-                | Date: {currentEvent.start_time} - {currentEvent.end_time}
+              <b>Event:</b> {currentEvent.description} 
+                | <b>Date:</b> {currentEvent.start_time} - {currentEvent.end_time}
             </button>
           </div>
         ) : (

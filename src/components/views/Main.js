@@ -8,8 +8,10 @@ export default function Main(props) {
   const [user, handleUserChange] = useState(null);
 
   function handleUserLogin(data) {
-    handleIsLoggedInChange(true);
-    handleUserChange(data);
+    if (!data.error) {
+      handleIsLoggedInChange(true);
+      handleUserChange(data);
+    }
   }
 
   function handleUserLogout() {
