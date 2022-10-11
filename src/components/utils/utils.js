@@ -37,7 +37,6 @@ export function apiCall(url, method, onSuccessFunction) {
       console.log(json.errors);
     }
     else {
-      console.log(json)
       onSuccessFunction(json)
     }
   });
@@ -57,7 +56,6 @@ export function apiCallWithVariables(url, method, data, onSuccessFunction) {
       console.log(json.errors);
     }
     else {
-      console.log(json)
       onSuccessFunction(json)
     }
   });

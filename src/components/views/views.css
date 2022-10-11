@@ -1,7 +1,7 @@
 
 .view-grid {
   display: grid;
-  grid-template-columns: 50vw 50vw;
+  grid-template-columns: 60vw 40vw;
   border-top: 0.5px solid #BFE1FF;
   border-right: 0.5px solid #BFE1FF;
   overflow: hidden;
@@ -12,9 +12,34 @@
   border-left: 0.5px solid #BFE1FF;
   border-bottom: 0.5px solid #BFE1FF;
   background-color: #FFFFFF;
-  height: 80vh;
+  height: 90vh;
 }
 
+.view-top-nav-grid {
+  display: grid;
+  grid-template-rows: 10% 90%;
+  overflow: hidden;
+}
+
+.three-button-column {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  border: 2px solid #38023B;
+  overflow: hidden;
+}
+
+.three-button-column > button {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.view-grid > div {
+  padding: 8px 4px;
+  border-left: 0.5px solid #BFE1FF;
+  border-bottom: 0.5px solid #BFE1FF;
+  background-color: #FFFFFF;
+  height: 80vh;
+}
 .user-login {
   width: 400px;
   font-size: 0;
@@ -42,6 +67,11 @@
 .login {
   grid-area: login;
   margin-right: 5px;
+}
+
+.login-display {
+  margin-top: 10%;
+  margin-left: 25%
 }
 
 .create {

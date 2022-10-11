@@ -10,7 +10,6 @@ export default function Main(props) {
   function handleUserLogin(data) {
     handleIsLoggedInChange(true);
     handleUserChange(data);
-    console.log(data)
   }
 
   function handleUserLogout() {

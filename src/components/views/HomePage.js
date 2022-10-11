@@ -18,6 +18,5 @@ export default function HomePage(props) {
       </div>
       <button className='logout-button' onClick={() => props.handleUserLogout()}>Logout</button>
     </div>
-
   );
 }
