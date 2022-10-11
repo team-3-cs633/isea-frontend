@@ -1,6 +1,7 @@
 .app {
   background-color: #D1F8F9;
   height: 100vh;
+  overflow: hidden;
 }
 
 .header {

@@ -1,0 +1,101 @@
+
+.view-grid {
+  display: grid;
+  grid-template-columns: 50vw 50vw;
+  border-top: 0.5px solid #BFE1FF;
+  border-right: 0.5px solid #BFE1FF;
+  overflow: hidden;
+}
+
+.view-grid > div {
+  padding: 8px 4px;
+  border-left: 0.5px solid #BFE1FF;
+  border-bottom: 0.5px solid #BFE1FF;
+  background-color: #FFFFFF;
+  height: 80vh;
+}
+
+.user-login {
+  width: 400px;
+  font-size: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 200px 200px;
+  grid-template-rows: 50px 50px;
+  grid-template-areas: 
+      "username password"
+      "login create";
+  overflow: hidden;
+}
+
+.username {
+  grid-area: username;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.password {
+  grid-area: password;
+  margin-top: 5px;
+}
+
+.login {
+  grid-area: login;
+  margin-right: 5px;
+}
+
+.create {
+  grid-area: create;
+}
+
+.login-button {
+  background-color: inherit;
+  width: 97%;
+  border: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 3px;
+  color: #D1F8F9;
+  font-weight: bold;
+  font-size: 12px;
+  background: linear-gradient(to bottom right, #4F0354, #38023B);
+}
+
+.login-button:hover {
+  color: #AEC3B0;
+}
+
+.create-button {
+  background-color: inherit;
+  width: 97%;
+  border: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: 12px;
+  color: #D1F8F9;
+  background: linear-gradient(to bottom right, #4F0354, #38023B);
+}
+
+.create-button:hover {
+  color: #AEC3B0
+}
+
+.login-input {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 95%;
+}
+
+.logout-button {
+  background-color: inherit;
+  width: 100%;
+  font-size: 25px;
+  border: none;
+  margin-top: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: right;
+  color: #AEC3B0;
+}
