@@ -17,7 +17,13 @@
 
 .view-top-nav-grid {
   display: grid;
-  grid-template-rows: 10% 90%;
+  grid-template-rows: 20% 80%;
+  overflow: hidden;
+}
+
+.event-button-grid {
+  display: grid;
+  grid-template-rows: 100%;
   overflow: hidden;
 }
 

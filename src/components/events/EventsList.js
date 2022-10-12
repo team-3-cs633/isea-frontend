@@ -4,7 +4,7 @@ import './events.css';
 
 export default function EventList(props) {
   return (
-    <div className="">
+    <div className="event-list">
       {props.events.map(currentEvent => {
         let result = currentEvent.id !== props.selectedId ? (
           <div key={currentEvent.id}>

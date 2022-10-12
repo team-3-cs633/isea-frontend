@@ -24,3 +24,7 @@
 .event-action {
   padding: 10px;
 }
+
+.event-list {
+  overflow-y: scroll;
+}

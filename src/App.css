@@ -9,3 +9,11 @@
   font-weight: 600;
   text-align: center;
 }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin: 1%;
+  font-size: 15px;
+  text-align: center;
+}

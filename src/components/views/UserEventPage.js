@@ -67,6 +67,7 @@ export default function UserEventPage(props) {
 
   function handleUpdateAddFavorites(data) {
     handleChangeFavorites(oldData => [...oldData, data.event_id]);
+    
     if (selectedId !== null) {
       handleEventMetricsQuery();
     }
