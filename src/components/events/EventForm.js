@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './events.css';
 
 export default function EventForm(props) {
@@ -10,8 +10,56 @@ export default function EventForm(props) {
   const [endTime, handleEndTimeChange] = useState("");
   const [eventLink, handleEventLinkChange] = useState("");
 
+  useEffect(() => {
+    if (props.event) {
+      handleDescriptionChange(props.event.description);
+      handleCategoryChange(props.event.category);
+      handleLocationChange(props.event.location);
+      handleCostChange(props.event.cost);
+      handleStartTimeChange(props.event.start_time);
+      handleEndTimeChange(props.event.end_time);
+      handleEventLinkChange(props.event.event_link);
+    } else {
+      resetFormFields();
+    }
+    // eslint-disable-next-line
+  }, [props.event]);
+
+  function resetFormFields() {
+    handleDescriptionChange("");
+    handleCategoryChange("");
+    handleLocationChange("");
+    handleCostChange("");
+    handleStartTimeChange("");
+    handleEndTimeChange("");
+    handleEventLinkChange("");
+  }
+
   function handeEventSubmit(event) {
     event.preventDefault();
+    
+    let data = {
+      "description": description,
+      "category": category,
+      "location": location,
+      "cost": cost,
+      "start_time": startTime,
+      "end_time": endTime,
+      "event_link": eventLink,
+    };
+
+    if (props.event) {
+      data["user_id"] = props.user.id
+    } else {
+        data["create_user_id"] = props.user.id
+        data["update_time"] = "now"
+    }
+
+    props.handleEventFormSubmit(data);
+    
+    if (!props.event) {
+      resetFormFields();
+    }
   }
 
   return (

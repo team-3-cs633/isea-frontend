@@ -45,3 +45,20 @@
 .event-create-button:hover {
   color: #AEC3B0;
 }
+
+.delete-button {
+  background-color: red;
+  width: 100%;
+  border: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 3px;
+  color: #D1F8F9;
+  font-weight: bold;
+  font-size: 12px;
+
+}
+
+.delete-button:hover {
+  color: #AEC3B0;
+}

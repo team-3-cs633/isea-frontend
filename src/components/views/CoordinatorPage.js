@@ -21,35 +21,49 @@ export default function CoordinatorPage(props) {
   }
 
   function handleUpdateEventsFromQuery(data) {
-    handleEventsChange(data);
+    handleEventsChange(data.filter(item => item.create_user_id === props.user.id))
   }
 
-  function handleUpdateEvent(event) {
+  function handlePageUpdate(data) {
+    handlePageChange(data)
+    handleSelectedIdChange(null);
+  }
+
+  function handleUpdateEventFormSubmit(json) {
+    handleUpdateEvent(json);
+    handlePageUpdate("manageEvent");
+  }
+
+  function handleCreateEventFormSubmit(json) {
+    handleCreateEvent(json);
+  }
+
+  function handleUpdateEvent(body) {
+    let url = eventURL + "/" + selectedId;
+    apiCallWithVariables(url, "POST", body, eventQuery);
+  }
+
+  function handleCreateEvent(body) {
+    apiCallWithVariables(eventURL, "POST", body, eventQuery);
+  }
+
+  function handleRemoveEvent(eventId) {
     let url = eventURL
 
     let body = {
-      "event_id": 1,
-      "create_user_id": props.user.id,
+      "event_id": eventId,
+      "requester_id": props.user.id,
     };
 
     apiCallWithVariables(url, "DELETE", body, eventQuery);
-  }
-
-  function handleCreateEvent() {
-    let url = eventURL
-
-    let body = {
-      "create_user_id": props.user.id,
-    };
-
-    apiCallWithVariables(url, "POST", body, eventQuery);
   }
 
   function displayPage() {
     if (page === "createEvent") {
       return (
         <EventForm
-          handleCreateEvent={handleCreateEvent}
+          user={props.user}
+          handleEventFormSubmit={handleCreateEventFormSubmit}
         />
       );
     }
@@ -57,10 +71,13 @@ export default function CoordinatorPage(props) {
     if (page === "manageEvent") {
       return (
         <ManageEventsList
+          user={props.user}
           events={events}
           handleUpdateEvent={handleUpdateEvent}
           selectedId={selectedId}
           handleSelectedIdChange={handleSelectedIdChange}
+          handleRemoveEvent={handleRemoveEvent}
+          handleEventFormSubmit={handleUpdateEventFormSubmit}
         />
       );
     }
@@ -69,8 +86,8 @@ export default function CoordinatorPage(props) {
   return (
     <div className="">
       <div className="two-button-column">
-        <button className="" onClick={() => handlePageChange("createEvent")}>Create Event</button>
-        <button className="" onClick={() => handlePageChange("manageEvent")}>Manage Events</button>
+        <button className="" onClick={() => handlePageUpdate("createEvent")}>Create Event</button>
+        <button className="" onClick={() => handlePageUpdate("manageEvent")}>Manage Events</button>
       </div>
       {displayPage()}
     </div>

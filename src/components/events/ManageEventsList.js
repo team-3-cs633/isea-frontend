@@ -17,7 +17,10 @@ export default function ManageEventsList(props) {
         ) : (
           <EventUpdateForm
             key={currentEvent.id}
+            user={props.user}
             event={currentEvent}
+            handleRemoveEvent={props.handleRemoveEvent}
+            handleEventFormSubmit={props.handleEventFormSubmit}
           />
         )
         
