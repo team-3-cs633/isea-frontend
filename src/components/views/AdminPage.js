@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import {apiCall, apiCallWithVariables, BASE_URL} from '../utils/utils';
-import EventsPage from './EventsPage';
-import UsersPage from './UsersPage';
+import React, { useState, useEffect } from 'react';
+import { apiCall, apiCallWithVariables, BASE_URL } from '../utils/utils';
+import EventsRemovalPage from '../events/EventsRemovalPage';
+import UsersRemovalPage from '../users/UsersRemovalPage';
 import './views.css';
 
 export default function AdminPage(props) {
@@ -14,8 +14,8 @@ export default function AdminPage(props) {
   useEffect(() => {
     eventQuery();
     userQuery();
-  // eslint-disable-next-line
-  },[]);
+    // eslint-disable-next-line
+  }, []);
 
   function eventQuery() {
     let url = eventURL;
@@ -60,7 +60,7 @@ export default function AdminPage(props) {
   function displayPage() {
     if (page === "events") {
       return (
-        <EventsPage
+        <EventsRemovalPage
           events={events}
           handleRemoveEvent={handleRemoveEvent}
         />
@@ -69,7 +69,7 @@ export default function AdminPage(props) {
 
     if (page === "users") {
       return (
-        <UsersPage
+        <UsersRemovalPage
           users={users}
           handleRemoveUser={handleRemoveUser}
         />

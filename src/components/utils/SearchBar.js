@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function SearchBar(props) {
 
@@ -11,14 +11,14 @@ export default function SearchBar(props) {
   function handleUpdateOnSearch(data) {
     props.handleUpdateOnSearch(data);
     handleChangeFormField(data);
-  }  
-  
+  }
+
   return (
     <div className="form-grid">
       <span> <b>Search:</b></span>
       <span>
         <input type="text"
-          value={formField} 
+          value={formField}
           onChange={(event) => handleUpdateOnSearch(event.target.value)}
         />
       </span>

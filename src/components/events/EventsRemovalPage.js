@@ -1,7 +1,7 @@
 import React from 'react';
-import './views.css';
+import './events.css';
 
-export default function EventsPage(props) {
+export default function EventsRemovalPage(props) {
   return (
     <div className="">
       {props.events.map(currentEvent => {
@@ -9,8 +9,8 @@ export default function EventsPage(props) {
           <div key={currentEvent.id}>
             <button className="event-select-button"
               onClick={() => props.handleRemoveEvent(currentEvent.id)}>
-              <b>Description:</b> {currentEvent.description} 
-                | <b>Category:</b> {currentEvent.category}
+              <b>Description:</b> {currentEvent.description}
+              | <b>Category:</b> {currentEvent.category}
             </button>
           </div>
         );

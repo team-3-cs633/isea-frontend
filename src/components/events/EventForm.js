@@ -37,7 +37,7 @@ export default function EventForm(props) {
 
   function handeEventSubmit(event) {
     event.preventDefault();
-    
+
     let data = {
       "description": description,
       "category": category,
@@ -51,12 +51,12 @@ export default function EventForm(props) {
     if (props.event) {
       data["user_id"] = props.user.id
     } else {
-        data["create_user_id"] = props.user.id
-        data["update_time"] = "now"
+      data["create_user_id"] = props.user.id
+      data["update_time"] = "now"
     }
 
     props.handleEventFormSubmit(data);
-    
+
     if (!props.event) {
       resetFormFields();
     }
@@ -104,7 +104,7 @@ export default function EventForm(props) {
         </div>
         <div>
           <span>
-            <input type="submit" className="event-create-button" value="submit"/>
+            <input type="submit" className="event-create-button" value="submit" />
           </span>
         </div>
       </form>

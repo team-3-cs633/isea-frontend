@@ -6,7 +6,7 @@
   overflow: hidden;
 }
 
-.event-grid > div {
+.event-grid>div {
   padding: 8px 4px;
   background-color: #FFFFFF;
 }

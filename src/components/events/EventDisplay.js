@@ -15,8 +15,8 @@ export default function EventDisplay(props) {
     <div className="event-grid">
       <div className='single-event-grid'>
         <span>
-          <b>Registrations:</b> {props.metrics.registrations} - 
-          - <b>Favorites:</b> {props.metrics.favorites} - 
+          <b>Registrations:</b> {props.metrics.registrations} -
+          - <b>Favorites:</b> {props.metrics.favorites} -
           - <b>Shares:</b> {props.metrics.shares}
         </span>
         <span><b>Description</b>: {props.event.description}</span>
@@ -29,11 +29,11 @@ export default function EventDisplay(props) {
       <div>
         <button
           className="event-action"
-          onClick={() => props.handleRegisterForEvent(props.event.id, !isRegistered())}>{!isRegistered()? "Register": "UnRegister"}
+          onClick={() => props.handleRegisterForEvent(props.event.id, !isRegistered())}>{!isRegistered() ? "Register" : "UnRegister"}
         </button>
         <button
           className="event-action"
-          onClick={() => props.handleFavoriteEvent(props.event.id, !isFavorite())}>{!isFavorite()? "Favorite": "Unfavorite"}
+          onClick={() => props.handleFavoriteEvent(props.event.id, !isFavorite())}>{!isFavorite() ? "Favorite" : "Unfavorite"}
         </button>
         <button
           className="event-action"

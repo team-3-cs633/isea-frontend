@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import EventList from '../events/EventsList';
-import {BASE_URL, apiCall, apiCallWithVariables} from '../utils/utils';
+import { BASE_URL, apiCall, apiCallWithVariables } from '../utils/utils';
 import './views.css';
 
-export default function UserEventPage(props) {
+export default function UserPage(props) {
   const eventURL = BASE_URL + "/events"
   const userURL = BASE_URL + "/users"
   const [selectedId, handleSelectedIdChange] = useState(null);
@@ -16,14 +16,14 @@ export default function UserEventPage(props) {
     handleEventQuery();
     handleUserRegistrationQuery();
     handleUserFavoriteQuery();
-  // eslint-disable-next-line
-  },[props.user.id]);
+    // eslint-disable-next-line
+  }, [props.user.id]);
 
   useEffect(() => {
     if (selectedId !== null) {
       handleEventMetricsQuery();
     }
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [selectedId]);
 
   function handleUpdateEventList(data) {
@@ -59,7 +59,7 @@ export default function UserEventPage(props) {
 
   function handleUpdateRemoveRegistrations(data) {
     handleChangeRegistered(oldData => oldData.filter(item => item !== data.event_id));
-    
+
     if (selectedId !== null) {
       handleEventMetricsQuery();
     }
@@ -67,7 +67,7 @@ export default function UserEventPage(props) {
 
   function handleUpdateAddFavorites(data) {
     handleChangeFavorites(oldData => [...oldData, data.event_id]);
-    
+
     if (selectedId !== null) {
       handleEventMetricsQuery();
     }
@@ -75,7 +75,7 @@ export default function UserEventPage(props) {
 
   function handleUpdateRemoveFavorites(data) {
     handleChangeFavorites(oldData => oldData.filter(item => item !== data.event_id));
-    
+
     if (selectedId !== null) {
       handleEventMetricsQuery();
     }
@@ -118,10 +118,10 @@ export default function UserEventPage(props) {
         "event_id": data,
         "user_id": props.user.id,
       };
-  
+
       apiCallWithVariables(url, "POST", body, handleUpdateAddRegistrations);
     } else {
-      let url =  eventURL + "/" + data + "/registration/" + props.user.id;
+      let url = eventURL + "/" + data + "/registration/" + props.user.id;
       apiCall(url, "POST", handleUpdateRemoveRegistrations);
     }
   }
@@ -134,10 +134,10 @@ export default function UserEventPage(props) {
         "event_id": data,
         "user_id": props.user.id,
       };
-  
+
       apiCallWithVariables(url, "POST", body, handleUpdateAddFavorites);
     } else {
-      let url =  eventURL + "/" + data + "/favorite/" + props.user.id;
+      let url = eventURL + "/" + data + "/favorite/" + props.user.id;
       apiCall(url, "POST", handleUpdateRemoveFavorites);
     }
   }
@@ -171,17 +171,17 @@ export default function UserEventPage(props) {
       </div>
       <div>
         <EventList
-            events={events}
-            user={props.user}
-            selectedId={selectedId}
-            metrics={metrics}
-            registrations={registrations}
-            favorites={favorites}
-            handleSelectedIdChange={handleSelectedIdChange}
-            handleRegisterForEvent={handleRegisterForEvent}
-            handleFavoriteEvent={handleFavoriteEvent}
-            handleShareEvent={handleShareEvent}
-          />
+          events={events}
+          user={props.user}
+          selectedId={selectedId}
+          metrics={metrics}
+          registrations={registrations}
+          favorites={favorites}
+          handleSelectedIdChange={handleSelectedIdChange}
+          handleRegisterForEvent={handleRegisterForEvent}
+          handleFavoriteEvent={handleFavoriteEvent}
+          handleShareEvent={handleShareEvent}
+        />
       </div>
     </div>
   );

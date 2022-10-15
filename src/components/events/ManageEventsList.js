@@ -10,8 +10,8 @@ export default function ManageEventsList(props) {
           <div key={currentEvent.id}>
             <button className="event-select-button"
               onClick={() => props.handleSelectedIdChange(currentEvent.id)}>
-              <b>Event:</b> {currentEvent.description} 
-                | <b>Date:</b> {currentEvent.start_time} - {currentEvent.end_time}
+              <b>Event:</b> {currentEvent.description}
+              | <b>Date:</b> {currentEvent.start_time} - {currentEvent.end_time}
             </button>
           </div>
         ) : (
@@ -23,8 +23,8 @@ export default function ManageEventsList(props) {
             handleEventFormSubmit={props.handleEventFormSubmit}
           />
         )
-        
-        return result; 
+
+        return result;
       })}
     </div>
   );

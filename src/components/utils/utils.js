@@ -32,13 +32,13 @@ export function apiCall(url, method, onSuccessFunction) {
       'Content-Type': 'application/json',
     }
   }).then(res => res.json())
-  .then(json => {
-    if (json.errors) {
-      console.log(json.errors);
-    }
-    
-    onSuccessFunction(json)
-  });
+    .then(json => {
+      if (json.errors) {
+        console.log(json.errors);
+      }
+
+      onSuccessFunction(json)
+    });
 }
 
 export function apiCallWithVariables(url, method, data, onSuccessFunction) {
@@ -50,11 +50,11 @@ export function apiCallWithVariables(url, method, data, onSuccessFunction) {
     },
     body: JSON.stringify(data)
   }).then(res => res.json())
-  .then(json => {
-    if (json.errors) {
-      console.log(json.errors);
-    }
-    
-    onSuccessFunction(json)
-  });
+    .then(json => {
+      if (json.errors) {
+        console.log(json.errors);
+      }
+
+      onSuccessFunction(json)
+    });
 }

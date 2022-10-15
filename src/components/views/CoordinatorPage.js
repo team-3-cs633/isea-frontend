@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {apiCall, apiCallWithVariables, BASE_URL} from '../utils/utils';
+import React, { useState, useEffect } from 'react';
+import { apiCall, apiCallWithVariables, BASE_URL } from '../utils/utils';
 import ManageEventsList from '../events/ManageEventsList';
 import EventForm from '../events/EventForm';
 import './views.css';
@@ -12,8 +12,8 @@ export default function CoordinatorPage(props) {
 
   useEffect(() => {
     eventQuery();
-  // eslint-disable-next-line
-  },[]);
+    // eslint-disable-next-line
+  }, []);
 
   function eventQuery() {
     let url = eventURL;

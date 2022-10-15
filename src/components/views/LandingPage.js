@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import CalendarPage from './CalendarPage';
-import {BASE_URL, apiCallWithVariables} from '../utils/utils';
+import { BASE_URL, apiCallWithVariables } from '../utils/utils';
 import './views.css';
 
 export default function LandingPage(props) {
@@ -17,7 +17,7 @@ export default function LandingPage(props) {
 
   function handleUserLogin(event) {
     event.preventDefault();
-    
+
     let data = {
       username: username,
       password: password,
@@ -26,13 +26,13 @@ export default function LandingPage(props) {
   }
 
   function handleUserCreation(event) {
-    if (username.trim().length  === 0 || password.trim().length === 0) {
+    if (username.trim().length === 0 || password.trim().length === 0) {
       alert("Username or Password field is blank");
       return;
     }
     event.preventDefault();
-    
-    let data ={
+
+    let data = {
       username: username,
       password: password,
     };
