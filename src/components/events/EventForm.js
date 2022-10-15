@@ -10,8 +10,8 @@ export default function EventForm(props) {
   const [endTime, handleEndTimeChange] = useState("");
   const [eventLink, handleEventLinkChange] = useState("");
 
-  function handeEventSubmit() {
-
+  function handeEventSubmit(event) {
+    event.preventDefault();
   }
 
   return (
@@ -56,7 +56,7 @@ export default function EventForm(props) {
         </div>
         <div>
           <span>
-            <input type="submit" value="submit"/>
+            <input type="submit" className="event-create-button" value="submit"/>
           </span>
         </div>
       </form>

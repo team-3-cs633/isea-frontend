@@ -27,6 +27,19 @@
   overflow: hidden;
 }
 
+.two-button-column {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  border: 2px solid #38023B;
+  overflow: hidden;
+}
+
+.two-button-column > button {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+
 .three-button-column {
   display: grid;
   grid-template-columns: 33% 33% 33%;
