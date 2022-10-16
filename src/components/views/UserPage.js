@@ -157,15 +157,15 @@ export default function UserPage(props) {
     <div className="view-top-nav-grid">
       <div className='three-button-column'>
         <button
-          className=""
+          className="nav-button"
           onClick={() => handleEventQuery()}>All Events
         </button>
         <button
-          className=""
+          className="nav-button"
           onClick={() => handleUserEventQuery("registration")}>Registered Events
         </button>
         <button
-          className=""
+          className="nav-button"
           onClick={() => handleUserEventQuery("favorite")}>Favorite Events
         </button>
       </div>

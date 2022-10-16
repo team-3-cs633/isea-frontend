@@ -26,6 +26,10 @@
   overflow: hidden;
 }
 
+.nav-button {
+  background-color: #8EB19D;
+}
+
 .two-button-column {
   display: grid;
   grid-template-columns: 50% 50%;
@@ -55,7 +59,7 @@
   border-left: 0.5px solid #BFE1FF;
   border-bottom: 0.5px solid #BFE1FF;
   background-color: #FFFFFF;
-  height: 80vh;
+  height: 85vh;
 }
 
 .user-login {

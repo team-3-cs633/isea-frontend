@@ -80,8 +80,8 @@ export default function AdminPage(props) {
   return (
     <div className="">
       <div className="two-button-column">
-        <button className="" onClick={() => handlePageChange("users")}>Manage Users</button>
-        <button className="" onClick={() => handlePageChange("events")}>Manage Events</button>
+        <button className="nav-button" onClick={() => handlePageChange("users")}>Manage Users</button>
+        <button className="nav-button" onClick={() => handlePageChange("events")}>Manage Events</button>
       </div>
       {displayPage()}
     </div>
