@@ -44,6 +44,15 @@ export default function Main() {
     handleSelectedIdChange(null);
   }
 
+  function handleUpdateEventListOnlyFuture(data) {
+    handleEventsChange(getFutureEvents(data));
+    handleSelectedIdChange(null);
+  }
+
+  function getFutureEvents(data) {
+    return data.filter(item => parseInt(item.end_time) >= Date.now());
+  }
+
   function handleDoNothing(data) {
     return;
   }
@@ -115,7 +124,12 @@ export default function Main() {
     if (data !== user.id) {
       url = url + "/" + user.id + "/" + data;
     }
-    apiCall(url, "GET", handleUpdateEventList);
+
+    if (data === "registration") {
+      apiCall(url, "GET", handleUpdateEventListOnlyFuture);
+    } else {
+      apiCall(url, "GET", handleUpdateEventList);
+    }
   }
 
   function handleEventMetricsQuery() {
@@ -268,7 +282,6 @@ export default function Main() {
           handleShareEvent={handleShareEvent}
           handleUserEventQuery={handleUserEventQuery}
           handleEventQuery={handleEventQuery}
-
         />
       );
     }
