@@ -35,4 +35,4 @@ The search within the UI is setup as key:value pairs
 
 ### Examples:
 ![Category Search Example](search_category.png)    
-![Cost Search Example](cost_category.png)
+![Cost Search Example](search_cost.png)
