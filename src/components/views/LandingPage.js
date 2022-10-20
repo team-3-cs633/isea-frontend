@@ -40,27 +40,33 @@ export default function LandingPage(props) {
   }
 
   return (
-    <div className="view-grid">
-      <div>
-        <CalendarPage />
-      </div>
-      <div>
-        <div className="login-display">
-          <div className="user-login">
-            <span className="username">
-              <input className="login-input" type="text" placeholder="Username"
-                value={username} onChange={(event) => handleUsernameChange(event.target.value)} />
-            </span>
-            <span className="password">
-              <input className="login-input" type="password" placeholder="Password"
-                value={password} onChange={(event) => handlePasswordChange(event.target.value)} />
-            </span>
-            <span className="login">
-              <button className="login-button" onClick={(event) => handleUserLogin(event)}>Login</button>
-            </span>
-            <span className="create">
-              <button className="create-button" onClick={(event) => handleUserCreation(event)}>Create</button>
-            </span>
+    <div>
+      <div className="search-placeholder"></div>
+      <div className="view-grid">
+        <div>
+          <CalendarPage
+            events={props.events}
+            handleSelectedIdChange={props.handleSelectedIdChange}
+          />
+        </div>
+        <div>
+          <div className="login-display">
+            <div className="user-login">
+              <span className="username">
+                <input className="login-input" type="text" placeholder="Username"
+                  value={username} onChange={(event) => handleUsernameChange(event.target.value)} />
+              </span>
+              <span className="password">
+                <input className="login-input" type="password" placeholder="Password"
+                  value={password} onChange={(event) => handlePasswordChange(event.target.value)} />
+              </span>
+              <span className="login">
+                <button className="login-button" onClick={(event) => handleUserLogin(event)}>Login</button>
+              </span>
+              <span className="create">
+                <button className="create-button" onClick={(event) => handleUserCreation(event)}>Create</button>
+              </span>
+            </div>
           </div>
         </div>
       </div>

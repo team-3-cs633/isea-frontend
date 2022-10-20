@@ -28,6 +28,7 @@
 
 .event-list {
   overflow-y: scroll;
+  height: 76vh;
 }
 
 .event-create-button {

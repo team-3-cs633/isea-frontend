@@ -3,7 +3,7 @@ import React from 'react';
 
 export default function UsersRemovalPage(props) {
   return (
-    <div className="">
+    <div className="events-list">
       {props.users.map(currentUser => {
         return (
           <div key={currentUser.id}>

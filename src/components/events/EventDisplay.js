@@ -1,4 +1,5 @@
 import React from 'react';
+import { readableDate, readableTime } from '../utils/utils';
 import './events.css';
 
 export default function EventDisplay(props) {
@@ -22,18 +23,23 @@ export default function EventDisplay(props) {
         <span><b>Description</b>: {props.event.description}</span>
         <span><b>Category</b>: {props.event.category}</span>
         <span><b>Location</b>: {props.event.location}</span>
-        <span><b>Date</b>: {props.event.start_time} - {props.event.end_time}</span>
+        <span>
+          <b>Date</b>: {readableDate(props.event.start_time)} @{readableTime(props.event.start_time)}  -- <b>to </b>
+          -- {readableDate(props.event.end_time)} @{readableTime(props.event.end_time)}
+        </span>
         <span><b>Cost</b>: {props.event.cost}</span>
         <span><b>Link</b>: {props.event.link ? props.event.link : "N/A"}</span>
       </div>
       <div>
         <button
           className="event-action"
-          onClick={() => props.handleRegisterForEvent(props.event.id, !isRegistered())}>{!isRegistered() ? "Register" : "UnRegister"}
+          onClick={() => props.handleRegisterForEvent(props.event.id, !isRegistered())}>
+            {!isRegistered() ? "Register" : "UnRegister"}
         </button>
         <button
           className="event-action"
-          onClick={() => props.handleFavoriteEvent(props.event.id, !isFavorite())}>{!isFavorite() ? "Favorite" : "Unfavorite"}
+          onClick={() => props.handleFavoriteEvent(props.event.id, !isFavorite())}>
+            {!isFavorite() ? "Favorite" : "Unfavorite"}
         </button>
         <button
           className="event-action"

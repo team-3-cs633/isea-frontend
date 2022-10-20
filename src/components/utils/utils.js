@@ -1,4 +1,4 @@
-export const BASE_URL = "http://127.0.0.1:5555"
+export const BASE_URL = "http://rharry.com:5555"
 
 export function handleUpdateOnSearch(searchArray, data) {
   let updateArray = [];
@@ -57,4 +57,14 @@ export function apiCallWithVariables(url, method, data, onSuccessFunction) {
 
       onSuccessFunction(json)
     });
+}
+
+export function readableDate(epoch) {
+  let date = new Date(parseInt(epoch)).toLocaleDateString();
+  return date
+}
+
+export function readableTime(epoch) {
+  let time = new Date(parseInt(epoch)).toLocaleTimeString();
+  return time;
 }

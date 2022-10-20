@@ -14,10 +14,10 @@ export default function SearchBar(props) {
   }
 
   return (
-    <div className="form-grid">
+    <div className="search-form-grid">
       <span> <b>Search:</b></span>
       <span>
-        <input type="text"
+        <input className="search-input" type="text"
           value={formField}
           onChange={(event) => handleUpdateOnSearch(event.target.value)}
         />
