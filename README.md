@@ -33,6 +33,6 @@ The search within the UI is setup as key:value pairs
     - etc.
 - The **values** are anything the user wants to search for. (Note: this is not case sensitive and returns partial matches) 
 
-### Examples:
+#### Examples:
 ![Category Search Example](search_category.png)    
 ![Cost Search Example](search_cost.png)
