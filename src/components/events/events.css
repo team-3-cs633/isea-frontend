@@ -1,0 +1,65 @@
+.event-grid {
+  display: grid;
+  grid-template-columns: 80% 20%;
+  border-top: 0.5px solid #BFE1FF;
+  border-right: 0.5px solid #BFE1FF;
+  overflow: hidden;
+}
+
+.event-grid>div {
+  padding: 8px 4px;
+  background-color: #FFFFFF;
+}
+
+.single-event-grid {
+  display: grid;
+  grid-template-rows: repeat(1fr, 7);
+}
+
+.event-select-button {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.event-action {
+  padding: 10px;
+  background-color: #8EB19D;
+}
+
+.event-list {
+  overflow-y: scroll;
+}
+
+.event-create-button {
+  background-color: inherit;
+  width: 100%;
+  border: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 3px;
+  color: #D1F8F9;
+  font-weight: bold;
+  font-size: 12px;
+  background: linear-gradient(to bottom right, #4F0354, #38023B);
+}
+
+.event-create-button:hover {
+  color: #AEC3B0;
+}
+
+.delete-button {
+  background-color: #C24758;
+  width: 100%;
+  border: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 3px;
+  color: #D1F8F9;
+  font-weight: bold;
+  font-size: 12px;
+
+}
+
+.delete-button:hover {
+  color: #AEC3B0;
+}

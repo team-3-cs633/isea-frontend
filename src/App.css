@@ -1,10 +1,19 @@
 .app {
-  background-color: #D1F8F9;
+  background-color: #8EB19D;
   height: 100vh;
+  overflow: hidden;
 }
 
 .header {
   font-size: 50px;
   font-weight: 600;
+  text-align: center;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  margin: 1%;
+  font-size: 15px;
   text-align: center;
 }
