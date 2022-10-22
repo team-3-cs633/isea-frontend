@@ -12,6 +12,10 @@ export default function EventDisplay(props) {
     return props.favorites.includes(props.event.id) ? true : false;
   };
 
+  function isFuture(time) {
+    return time >= Date.now() ? true : false;
+  }
+
   return (
     <div className="event-grid">
       <div className='single-event-grid'>
@@ -31,11 +35,13 @@ export default function EventDisplay(props) {
         <span><b>Link</b>: {props.event.link ? props.event.link : "N/A"}</span>
       </div>
       <div>
-        <button
-          className="event-action"
-          onClick={() => props.handleRegisterForEvent(props.event.id, !isRegistered())}>
-            {!isRegistered() ? "Register" : "UnRegister"}
-        </button>
+        {isFuture(props.event.start_time) &&
+          <button
+            className="event-action"
+            onClick={() => props.handleRegisterForEvent(props.event.id, !isRegistered())}>
+              {!isRegistered() ? "Register" : "UnRegister"}
+          </button>
+        }
         <button
           className="event-action"
           onClick={() => props.handleFavoriteEvent(props.event.id, !isFavorite())}>
