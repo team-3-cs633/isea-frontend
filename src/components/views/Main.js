@@ -4,13 +4,13 @@ import CalendarPage from './CalendarPage';
 import CoordinatorPage from './CoordinatorPage';
 import AdminPage from './AdminPage';
 import LandingPage from './LandingPage';
-import { apiCall, apiCallWithVariables, BASE_URL, handleUpdateOnSearch } from '../utils/utils';
+import { apiCall, apiCallWithVariables, handleUpdateOnSearch } from '../utils/utils';
 import SearchBar from '../utils/SearchBar';
 import './views.css';
 
 export default function Main() {
-  const eventURL = BASE_URL + "/events"
-  const userURL = BASE_URL + "/users"
+  const eventURL = process.env.REACT_APP_BASE_URL + "/events"
+  const userURL = process.env.REACT_APP_BASE_URL + "/users"
   const [isLoggedIn, handleIsLoggedInChange] = useState(false);
   const [user, handleUserChange] = useState(null);
   const [events, handleEventsChange] = useState([]);
@@ -53,8 +53,8 @@ export default function Main() {
     return data.filter(item => parseInt(item.end_time) >= Date.now());
   }
 
-  function handleDoNothing(data) {
-    return;
+  function handleFunctionWrapper(data) {
+    handleEventMetricsQuery();
   }
 
   function handleUpdateEventMetrics(data) {
@@ -169,15 +169,20 @@ export default function Main() {
     }
   }
 
-  function handleShareEvent(data) {
+  function handleShareEvent(eventId, to) {
     let url = eventURL + "/share";
 
+    if (to === "") {
+      return;
+    }
+
     let body = {
-      "event_id": data,
+      "event_id": eventId,
+      "user_id": user.id,
+      "to": to,
     };
 
-    apiCallWithVariables(url, "POST", body, handleDoNothing);
-    handleEventMetricsQuery();
+    apiCallWithVariables(url, "POST", body, handleFunctionWrapper);
   }
   
   useEffect(() => {

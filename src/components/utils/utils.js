@@ -1,4 +1,3 @@
-export const BASE_URL = "http://rharry.com:5555"
 
 export function handleUpdateOnSearch(searchArray, data) {
   let updateArray = [];

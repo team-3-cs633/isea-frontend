@@ -26,6 +26,12 @@
   background-color: #8EB19D;
 }
 
+.share-submit {
+  padding: 10px;
+  background-color: #38023B;
+  color: #8EB19D;
+}
+
 .event-list {
   overflow-y: scroll;
   height: 76vh;

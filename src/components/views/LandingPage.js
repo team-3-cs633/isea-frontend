@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import CalendarPage from './CalendarPage';
-import { BASE_URL, apiCallWithVariables } from '../utils/utils';
+import { apiCallWithVariables } from '../utils/utils';
 import './views.css';
 
 export default function LandingPage(props) {
-  const loginURL = BASE_URL + "/users/login"
-  const userURL = BASE_URL + "/users"
+  const loginURL = process.env.REACT_APP_BASE_URL + "/users/login"
+  const userURL = process.env.REACT_APP_BASE_URL + "/users"
   const [username, handleUsernameChange] = useState("");
   const [password, handlePasswordChange] = useState("");
 

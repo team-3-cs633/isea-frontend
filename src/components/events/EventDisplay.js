@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState} from 'react';
 import { readableDate, readableTime } from '../utils/utils';
 import './events.css';
 
 export default function EventDisplay(props) {
+  const [to, handleToChange] = useState("");
+  const [shareEnabled, handleShareEnabledChange] = useState(false);
 
   function isRegistered() {
     return props.registrations.includes(props.event.id) ? true : false;
@@ -14,6 +16,12 @@ export default function EventDisplay(props) {
 
   function isFuture(time) {
     return time >= Date.now() ? true : false;
+  }
+
+  function handleShareEvent(event, to) {
+    props.handleShareEvent(event, to);
+    handleToChange("");
+    handleShareEnabledChange(false);
   }
 
   return (
@@ -49,8 +57,18 @@ export default function EventDisplay(props) {
         </button>
         <button
           className="event-action"
-          onClick={() => props.handleShareEvent(props.event.id)}>Share
+          onClick={() => handleShareEnabledChange(!shareEnabled)}> {shareEnabled? "Hide Share" : "Share"}
         </button>
+        {shareEnabled &&
+        <div>
+          <input className="login-input" type="text" placeholder="recipient email"Username
+            value={to} onChange={(event) => handleToChange(event.target.value)} />
+          <button
+            className="share-submit"
+            onClick={() => handleShareEvent(props.event.id, to)}>Submit
+          </button>
+        </div>
+        }
       </div>
     </div>
   );

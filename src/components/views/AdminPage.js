@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { apiCall, apiCallWithVariables, BASE_URL } from '../utils/utils';
+import { apiCall, apiCallWithVariables } from '../utils/utils';
 import EventsRemovalPage from '../events/EventsRemovalPage';
 import UsersRemovalPage from '../users/UsersRemovalPage';
 import './views.css';
 
 export default function AdminPage(props) {
-  const userURL = BASE_URL + "/users";
+  const userURL = process.env.REACT_APP_BASE_URL + "/users";
   const [page, handlePageChange] = useState("home");
   const [users, handleUsersChange] = useState([]);
 
