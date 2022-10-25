@@ -40,8 +40,9 @@ export default function LandingPage(props) {
   }
 
   return (
-    <div>
-      <div className="search-placeholder"></div>
+    <div className="main-app-grid">
+      <div></div>
+      <div></div>
       <div className="view-grid">
         <div>
           <CalendarPage

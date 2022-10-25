@@ -17,6 +17,7 @@ export default function AdminPage(props) {
   function userQuery() {
     let url = userURL;
     apiCall(url, "GET", handleUpdateUsersFromQuery);
+    console.log(users)
   }
 
   function handleUpdateUsersFromQuery(data) {

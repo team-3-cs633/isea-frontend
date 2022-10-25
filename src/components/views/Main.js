@@ -318,7 +318,10 @@ export default function Main() {
 
   if (isLoggedIn && user !== null) {
     return (
-      <div>
+      <div className="main-app-grid">
+        <div className="logout-grid-cell">
+          <button className='logout-button' onClick={() => handleUserLogout()}>Logout</button>
+        </div>
         <div>
           <SearchBar
             handleUpdateOnSearch={handleUpdateEventsList}
@@ -336,7 +339,6 @@ export default function Main() {
             {displayPage()}
           </div>
         </div>
-        <button className='logout-button' onClick={() => handleUserLogout()}>Logout</button>
       </div>
     );
   } else {
