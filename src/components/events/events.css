@@ -8,7 +8,7 @@
 
 .event-grid>div {
   padding: 8px 4px;
-  background-color: #FFFFFF;
+  background-color: #F1FCFD;
 }
 
 .single-event-grid {
@@ -19,6 +19,7 @@
 .event-select-button {
   padding-top: 10px;
   padding-bottom: 10px;
+  background-color: #FFFFFF;
 }
 
 .event-action {
@@ -34,7 +35,7 @@
 
 .event-list {
   overflow-y: scroll;
-  height: 76vh;
+  height: calc(100vh - 200px);
 }
 
 .event-create-button {
