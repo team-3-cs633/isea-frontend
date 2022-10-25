@@ -40,7 +40,7 @@ export default function EventDisplay(props) {
           -- {readableDate(props.event.end_time)} @{readableTime(props.event.end_time)}
         </span>
         <span><b>Cost</b>: {props.event.cost}</span>
-        <span><b>Link</b>: {props.event.link ? props.event.link : "N/A"}</span>
+        <span><b>Link</b>: {props.event_link ? props.event_link : "N/A"}</span>
       </div>
       <div>
         {isFuture(props.event.start_time) &&
