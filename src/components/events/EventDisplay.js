@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { readableDate, readableTime } from '../utils/utils';
 import './events.css';
 
@@ -47,27 +47,27 @@ export default function EventDisplay(props) {
           <button
             className="event-action"
             onClick={() => props.handleRegisterForEvent(props.event.id, !isRegistered())}>
-              {!isRegistered() ? "Register" : "UnRegister"}
+            {!isRegistered() ? "Register" : "UnRegister"}
           </button>
         }
         <button
           className="event-action"
           onClick={() => props.handleFavoriteEvent(props.event.id, !isFavorite())}>
-            {!isFavorite() ? "Favorite" : "Unfavorite"}
+          {!isFavorite() ? "Favorite" : "Unfavorite"}
         </button>
         <button
           className="event-action"
-          onClick={() => handleShareEnabledChange(!shareEnabled)}> {shareEnabled? "Hide Share" : "Share"}
+          onClick={() => handleShareEnabledChange(!shareEnabled)}> {shareEnabled ? "Hide Share" : "Share"}
         </button>
         {shareEnabled &&
-        <div>
-          <input className="login-input" type="text" placeholder="recipient email"Username
-            value={to} onChange={(event) => handleToChange(event.target.value)} />
-          <button
-            className="share-submit"
-            onClick={() => handleShareEvent(props.event.id, to)}>Submit
-          </button>
-        </div>
+          <div>
+            <input className="login-input" type="text" placeholder="recipient email" Username
+              value={to} onChange={(event) => handleToChange(event.target.value)} />
+            <button
+              className="share-submit"
+              onClick={() => handleShareEvent(props.event.id, to)}>Submit
+            </button>
+          </div>
         }
       </div>
     </div>

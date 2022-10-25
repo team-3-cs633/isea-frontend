@@ -24,7 +24,7 @@ export default function Main() {
 
   useEffect(() => {
     handleEventQuery();
-    
+
     if (user !== null) {
       handleUserRegistrationQuery();
       handleUserFavoriteQuery();
@@ -184,7 +184,7 @@ export default function Main() {
 
     apiCallWithVariables(url, "POST", body, handleFunctionWrapper);
   }
-  
+
   useEffect(() => {
     eventQuery();
     // eslint-disable-next-line
@@ -258,15 +258,15 @@ export default function Main() {
   useEffect(() => {
     handleChangeSearchEvents(events)
     handleResetSearch(old => !old);
-    
+
     if (user != null) {
       handleCoordinatorEventsChange(events.filter(item => item.create_user_id === user.id))
     }
-  // eslint-disable-next-line
+    // eslint-disable-next-line
   }, [events])
 
   function handleUpdateEventsList(data) {
-    let updated =  handleUpdateOnSearch(events, data);
+    let updated = handleUpdateOnSearch(events, data);
     handleCoordinatorEventsChange(updated.filter(item => item.create_user_id === user.id))
     handleChangeSearchEvents(updated);
   }
