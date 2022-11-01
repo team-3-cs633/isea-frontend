@@ -39,7 +39,7 @@ export default function CalendarPage(props) {
 
     if (Math.floor(
       ((date.getDate() - 1 + (date.getDay() < 3 ? date.getDay() + 6 : date.getDay())) / 7)) === index
-      && date.getDay() === weekDay && date.getMonth() === currentMonth) {
+      && date.getDay() === weekDay && (date.getMonth() === currentMonth || date.getMonth() === currentMonth + 1)) {
       return <div className="calendar-item">{date.getDate()}</div>
     }
 
@@ -47,19 +47,47 @@ export default function CalendarPage(props) {
   }
 
   function getValidCalendarSpotItem(epoch, weekDay, index) {
+    let thirtyMonths = [1, 3, 5, 7, 9, 11];
+
     let now = new Date();
     let currentMonth = now.getMonth();
     let date = new Date(epoch);
 
-    if (!(Math.floor(((date.getDate() - 1 + (date.getDay() < 3 ? date.getDay() + 6 : date.getDay())) / 7)) === index)) {
+    let indexOffset = now.getDay();
+    let indexCalculated;
+
+    // Determine the row index based on the current now date and the events date
+    //
+    // If the current date is less than now, the first equation does not work so we need
+    // to start at a base number to then calculate the index
+    // Since this is based on the number of days in a month, it is currently set to work
+    // for all months except Feb.
+    if (now.getDate() <= date.getDate() && currentMonth === date.getMonth()) {
+      indexCalculated = Math.floor(((date.getDate() - now.getDate()) + indexOffset) / 7);
+    } else {
+      let base;
+
+      if (thirtyMonths.includes(now.getMonth())) {
+        base = 30;
+      } else {
+        base = 31
+      }
+
+      indexCalculated = Math.floor((base - now.getDate() + indexOffset + date.getDate()) / 7);
+    }
+
+    if (!(indexCalculated === index)) {
       return false;
     }
 
+    if (!(now <= date)) {
+      return false;
+    }
     if (!(date.getDay() === weekDay)) {
       return false;
     }
 
-    if (!(date.getMonth() === currentMonth)) {
+    if (!(date.getMonth() === currentMonth) || !(date.getMonth() === currentMonth + 1)) {
       return false;
     }
 
