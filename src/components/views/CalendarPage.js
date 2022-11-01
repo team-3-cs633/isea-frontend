@@ -77,42 +77,44 @@ export default function CalendarPage(props) {
         <span>Friday</span>
         <span>Saturday</span>
       </div>
-      <div className="calendar-main-grid">
-        <span>{filterEventsByDateCell(props.events, 0, 0)}</span>
-        <span>{filterEventsByDateCell(props.events, 1, 0)}</span>
-        <span>{filterEventsByDateCell(props.events, 2, 0)}</span>
-        <span>{filterEventsByDateCell(props.events, 3, 0)}</span>
-        <span>{filterEventsByDateCell(props.events, 4, 0)}</span>
-        <span>{filterEventsByDateCell(props.events, 5, 0)}</span>
-        <span>{filterEventsByDateCell(props.events, 6, 0)}</span>
-        <span>{filterEventsByDateCell(props.events, 0, 1)}</span>
-        <span>{filterEventsByDateCell(props.events, 1, 1)}</span>
-        <span>{filterEventsByDateCell(props.events, 2, 1)}</span>
-        <span>{filterEventsByDateCell(props.events, 3, 1)}</span>
-        <span>{filterEventsByDateCell(props.events, 4, 1)}</span>
-        <span>{filterEventsByDateCell(props.events, 5, 1)}</span>
-        <span>{filterEventsByDateCell(props.events, 6, 1)}</span>
-        <span>{filterEventsByDateCell(props.events, 0, 2)}</span>
-        <span>{filterEventsByDateCell(props.events, 1, 2)}</span>
-        <span>{filterEventsByDateCell(props.events, 2, 2)}</span>
-        <span>{filterEventsByDateCell(props.events, 3, 2)}</span>
-        <span>{filterEventsByDateCell(props.events, 4, 2)}</span>
-        <span>{filterEventsByDateCell(props.events, 5, 2)}</span>
-        <span>{filterEventsByDateCell(props.events, 6, 2)}</span>
-        <span>{filterEventsByDateCell(props.events, 0, 3)}</span>
-        <span>{filterEventsByDateCell(props.events, 1, 3)}</span>
-        <span>{filterEventsByDateCell(props.events, 2, 3)}</span>
-        <span>{filterEventsByDateCell(props.events, 3, 3)}</span>
-        <span>{filterEventsByDateCell(props.events, 4, 3)}</span>
-        <span>{filterEventsByDateCell(props.events, 5, 3)}</span>
-        <span>{filterEventsByDateCell(props.events, 6, 3)}</span>
-        <span>{filterEventsByDateCell(props.events, 0, 4)}</span>
-        <span>{filterEventsByDateCell(props.events, 1, 4)}</span>
-        <span>{filterEventsByDateCell(props.events, 2, 4)}</span>
-        <span>{filterEventsByDateCell(props.events, 3, 4)}</span>
-        <span>{filterEventsByDateCell(props.events, 4, 4)}</span>
-        <span>{filterEventsByDateCell(props.events, 5, 4)}</span>
-        <span>{filterEventsByDateCell(props.events, 6, 4)}</span>
+      <div className="calendar-scroll-wrapper">
+        <div className="calendar-main-grid">
+          <span>{filterEventsByDateCell(props.events, 0, 0)}</span>
+          <span>{filterEventsByDateCell(props.events, 1, 0)}</span>
+          <span>{filterEventsByDateCell(props.events, 2, 0)}</span>
+          <span>{filterEventsByDateCell(props.events, 3, 0)}</span>
+          <span>{filterEventsByDateCell(props.events, 4, 0)}</span>
+          <span>{filterEventsByDateCell(props.events, 5, 0)}</span>
+          <span>{filterEventsByDateCell(props.events, 6, 0)}</span>
+          <span>{filterEventsByDateCell(props.events, 0, 1)}</span>
+          <span>{filterEventsByDateCell(props.events, 1, 1)}</span>
+          <span>{filterEventsByDateCell(props.events, 2, 1)}</span>
+          <span>{filterEventsByDateCell(props.events, 3, 1)}</span>
+          <span>{filterEventsByDateCell(props.events, 4, 1)}</span>
+          <span>{filterEventsByDateCell(props.events, 5, 1)}</span>
+          <span>{filterEventsByDateCell(props.events, 6, 1)}</span>
+          <span>{filterEventsByDateCell(props.events, 0, 2)}</span>
+          <span>{filterEventsByDateCell(props.events, 1, 2)}</span>
+          <span>{filterEventsByDateCell(props.events, 2, 2)}</span>
+          <span>{filterEventsByDateCell(props.events, 3, 2)}</span>
+          <span>{filterEventsByDateCell(props.events, 4, 2)}</span>
+          <span>{filterEventsByDateCell(props.events, 5, 2)}</span>
+          <span>{filterEventsByDateCell(props.events, 6, 2)}</span>
+          <span>{filterEventsByDateCell(props.events, 0, 3)}</span>
+          <span>{filterEventsByDateCell(props.events, 1, 3)}</span>
+          <span>{filterEventsByDateCell(props.events, 2, 3)}</span>
+          <span>{filterEventsByDateCell(props.events, 3, 3)}</span>
+          <span>{filterEventsByDateCell(props.events, 4, 3)}</span>
+          <span>{filterEventsByDateCell(props.events, 5, 3)}</span>
+          <span>{filterEventsByDateCell(props.events, 6, 3)}</span>
+          <span>{filterEventsByDateCell(props.events, 0, 4)}</span>
+          <span>{filterEventsByDateCell(props.events, 1, 4)}</span>
+          <span>{filterEventsByDateCell(props.events, 2, 4)}</span>
+          <span>{filterEventsByDateCell(props.events, 3, 4)}</span>
+          <span>{filterEventsByDateCell(props.events, 4, 4)}</span>
+          <span>{filterEventsByDateCell(props.events, 5, 4)}</span>
+          <span>{filterEventsByDateCell(props.events, 6, 4)}</span>
+        </div>
       </div>
     </div>
   );

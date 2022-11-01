@@ -157,12 +157,17 @@
   color: #38023B;
 }
 
+.calendar-scroll-wrapper {
+  overflow-y: scroll !important;
+  height: calc(100vh - 180px);
+}
+
 .calendar-main-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, 1fr);
   background-color: #FFFFFF;
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 .calendar-main-grid>span {
