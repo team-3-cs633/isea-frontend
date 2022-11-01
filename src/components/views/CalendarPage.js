@@ -12,7 +12,7 @@ export default function CalendarPage(props) {
       <div>
         <div>
           {currentEvents.length > 0 ?
-            setCalendarDate(parseInt(currentEvents[0].start_time), weekDay, index)
+            setCalendarDate(parseInt(currentEvents[0].start_time))
             :
             ""
           }
@@ -32,18 +32,10 @@ export default function CalendarPage(props) {
     );
   }
 
-  function setCalendarDate(epoch, weekDay, index) {
-    let now = new Date();
-    let currentMonth = now.getMonth();
+  function setCalendarDate(epoch) {
     let date = new Date(epoch);
 
-    if (Math.floor(
-      ((date.getDate() - 1 + (date.getDay() < 3 ? date.getDay() + 6 : date.getDay())) / 7)) === index
-      && date.getDay() === weekDay && (date.getMonth() === currentMonth || date.getMonth() === currentMonth + 1)) {
-      return <div className="calendar-item">{date.getDate()}</div>
-    }
-
-    return "";
+    return <div className="calendar-item">{date.getDate()}</div>;
   }
 
   function getValidCalendarSpotItem(epoch, weekDay, index) {
@@ -87,7 +79,7 @@ export default function CalendarPage(props) {
       return false;
     }
 
-    if (!(date.getMonth() === currentMonth) || !(date.getMonth() === currentMonth + 1)) {
+    if (!([currentMonth, currentMonth + 1].includes(date.getMonth()))) {
       return false;
     }
 
