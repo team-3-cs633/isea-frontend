@@ -50,7 +50,7 @@ export default function LandingPage(props) {
             handleSelectedIdChange={props.handleSelectedIdChange}
           />
         </div>
-        <div>
+        <div className="login-display-wrapper">
           <div className="login-display">
             <div className="user-login">
               <span className="username">
