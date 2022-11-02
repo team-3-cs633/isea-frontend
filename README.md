@@ -1,3 +1,6 @@
+![isea tests](https://github.com/team-3-cs633/isea-frontend/actions/workflows/testing.yml/badge.svg)
+
+
 # isea-frontend
 The frontend for isea
 
@@ -13,7 +16,7 @@ Run `npm start`
 
 ## Testing  
 
-TBD   
+Run `npm test`
 
 ## Formatting 
 
