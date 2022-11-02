@@ -3,6 +3,14 @@ import EventDisplay from './EventDisplay';
 import { readableDate, readableTime } from '../utils/utils';
 import './events.css';
 
+/**
+ * A events display page for the BU Student view.
+ * 
+ * Provides a list of events, that when selected will display additional event information
+ * 
+ * @param {*} props the props passed in from the parent component
+ * @returns the user (BU Student) events list display
+ */
 export default function EventList(props) {
   return (
     <div className="event-list">

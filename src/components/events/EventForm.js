@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './events.css';
 
+/**
+ * A form for creating and updating events.
+ * 
+ * @param {*} props the props passed in from the parent component
+ * @returns the event form display
+ */
 export default function EventForm(props) {
   const [description, handleDescriptionChange] = useState("");
   const [category, handleCategoryChange] = useState("");
@@ -10,6 +16,12 @@ export default function EventForm(props) {
   const [endTime, handleEndTimeChange] = useState("");
   const [eventLink, handleEventLinkChange] = useState("");
 
+  /**
+   * Check to see if props.event exists.
+   * 
+   * If it does, the form fields need to be updated to reflect the 
+   * events current values
+   */
   useEffect(() => {
     if (props.event) {
       handleDescriptionChange(props.event.description);
@@ -25,6 +37,9 @@ export default function EventForm(props) {
     // eslint-disable-next-line
   }, [props.event]);
 
+  /**
+   * Reset the formfields to empty strings.
+   */
   function resetFormFields() {
     handleDescriptionChange("");
     handleCategoryChange("");
@@ -35,6 +50,16 @@ export default function EventForm(props) {
     handleEventLinkChange("");
   }
 
+  /**
+   * Submit the event data.
+   * 
+   * This can either be the creation of a new event
+   * or the updating of an existing event
+   * 
+   * This is determined by the function passed in as props 
+   * named 'handleEventFormSubmit'
+   * @param {*} event the event that is triggered by the form field submission
+   */
   function handeEventSubmit(event) {
     event.preventDefault();
 
@@ -49,7 +74,7 @@ export default function EventForm(props) {
     };
 
     data["update_time"] = Date.now()
-    
+
     if (props.event) {
       data["user_id"] = props.user.id
     } else {

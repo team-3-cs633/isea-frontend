@@ -1,8 +1,29 @@
 import React from 'react';
 import './views.css';
 
+/**
+ * The display for the calendar view.
+ * 
+ * The calendar is a 5x7 grid
+ * - The columns are the days of the week, starting from Sunday and ending on Saturday
+ * - The rows are based on the distance from now
+ * 
+ * The calendar will only display future events, where the current day is on the top column
+ * and the remaining future dates continue in the typical top to bottom left to right format
+ * 
+ * @param {*} props the props passed down from the parent component
+ * @returns the calendar page display
+ */
 export default function CalendarPage(props) {
 
+  /**
+   * Filter events to display for a grid cell.
+   * 
+   * @param {*} events the potential events to display
+   * @param {*} weekDay the weekday index of the cell (0=sunday, .. 6=saturday)
+   * @param {*} index the row index of the grid
+   * @returns a list of events with a calendar date or an empty string if there are no matching dates
+   */
   function filterEventsByDateCell(events, weekDay, index) {
     let currentEvents = events.filter(
       item => getValidCalendarSpotItem(parseInt(item.start_time), weekDay, index)
@@ -32,12 +53,26 @@ export default function CalendarPage(props) {
     );
   }
 
+  /**
+   * Set the date in a calendar grid box.
+   * 
+   * @param {*} epoch the time in epoch ms
+   * @returns a calendar date to display
+   */
   function setCalendarDate(epoch) {
     let date = new Date(epoch);
 
     return <div className="calendar-item">{date.getDate()}</div>;
   }
 
+  /**
+   * Determine if the event is valid for the current calendar spot (grid cell).
+   * 
+   * @param {*} epoch the epoch ms timestamp of an event start time
+   * @param {*} weekDay the weekday index of the cell (0=sunday, .. 6=saturday)
+   * @param {*} index the row index of the grid
+   * @returns true if the event time matches the parameters required for display, false if not
+   */
   function getValidCalendarSpotItem(epoch, weekDay, index) {
     let thirtyMonths = [1, 3, 5, 7, 9, 11];
 

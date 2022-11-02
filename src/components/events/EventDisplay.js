@@ -2,22 +2,59 @@ import React, { useState } from 'react';
 import { readableDate, readableTime } from '../utils/utils';
 import './events.css';
 
+/**
+ * Display event information and provide access to user events.
+ * 
+ * Provides a display of the event information and buttons which enable
+ * the functionalities around events
+ * - register / unregister
+ * - favorite / unfavorite
+ * - share
+ * 
+ * @param {*} props the props passed in from the parent component
+ * @returns the event detailed information display
+ */
 export default function EventDisplay(props) {
   const [to, handleToChange] = useState("");
   const [shareEnabled, handleShareEnabledChange] = useState(false);
 
+  /**
+   * Check to see if an event is registered.
+   * 
+   * @returns true if the user is registered to the event, false if not
+   */
   function isRegistered() {
     return props.registrations.includes(props.event.id) ? true : false;
   };
 
+  /**
+   * Check to see if an event is favorited.
+   * 
+   * @returns true if the user has favorited the event, false if not
+   */
   function isFavorite() {
     return props.favorites.includes(props.event.id) ? true : false;
   };
 
+  /**
+   * Check to see if the input time is in the future.
+   * 
+   * @param {*} time the epoch ms time
+   * @returns true if the time is in the future, false if not
+   */
   function isFuture(time) {
     return time >= Date.now() ? true : false;
   }
 
+  /**
+   * Handle when an event is shared.
+   * 
+   * Combined multipel state changes and execution of the event so they 
+   * are updated together.
+   * 
+   * @param {*} event the event to share
+   * @param {*} to the recipient of the shared event
+   */
   function handleShareEvent(event, to) {
     props.handleShareEvent(event, to);
     handleToChange("");
