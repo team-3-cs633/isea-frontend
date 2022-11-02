@@ -46,6 +46,10 @@
   background-color: #8EB19D;
 }
 
+.nav-button:hover {
+  color: #FFFFFF;
+}
+
 .two-button-column {
   display: grid;
   grid-template-columns: 50% 50%;
