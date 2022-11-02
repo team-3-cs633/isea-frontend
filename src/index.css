@@ -11,9 +11,9 @@ button {
   border: 1px solid #D1F8F9;
   border-radius: 3px;
   width: 100%;
-  background-color: #D1F8F9;
+  background-color: #E8FBFC;
 }
 
 button:hover {
-  color: #FFFFFF;
+  color: #8EB19D;
 }

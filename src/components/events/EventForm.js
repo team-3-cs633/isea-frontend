@@ -48,11 +48,12 @@ export default function EventForm(props) {
       "event_link": eventLink,
     };
 
+    data["update_time"] = Date.now()
+    
     if (props.event) {
       data["user_id"] = props.user.id
     } else {
       data["create_user_id"] = props.user.id
-      data["update_time"] = "now"
     }
 
     props.handleEventFormSubmit(data);

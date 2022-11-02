@@ -3,7 +3,7 @@ import './events.css';
 
 export default function EventsRemovalPage(props) {
   return (
-    <div className="">
+    <div className="event-list">
       {props.events.map(currentEvent => {
         return (
           <div key={currentEvent.id}>

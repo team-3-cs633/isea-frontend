@@ -1,17 +1,33 @@
+.main-app-grid {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 100vw;
+  grid-template-rows: 30px 50px calc(100vh - 150px);
+  grid-template-areas:
+    "logout"
+    "search"
+    "main";
+  overflow: hidden;
+}
+
+.logout-grid-cell {
+  display: grid;
+  grid-area: logout;
+  padding-left: 90vw;
+  padding-right: 20px;
+  overflow: hidden;
+}
+
 .view-grid {
   display: grid;
+  grid-area: main;
   grid-template-columns: 60vw 40vw;
-  border-top: 0.5px solid #BFE1FF;
-  border-right: 0.5px solid #BFE1FF;
   overflow: hidden;
 }
 
 .view-grid>div {
   padding: 8px 4px;
-  border-left: 0.5px solid #BFE1FF;
-  border-bottom: 0.5px solid #BFE1FF;
-  background-color: #FFFFFF;
-  height: 90vh;
+  height: calc(100vh - 100px);
 }
 
 .view-top-nav-grid {
@@ -52,14 +68,6 @@
 .three-button-column>button {
   padding-top: 5px;
   padding-bottom: 5px;
-}
-
-.view-grid>div {
-  padding: 8px 4px;
-  border-left: 0.5px solid #BFE1FF;
-  border-bottom: 0.5px solid #BFE1FF;
-  background-color: #FFFFFF;
-  height: 85vh;
 }
 
 .user-login {
@@ -145,9 +153,59 @@
   width: 100%;
   font-size: 25px;
   border: none;
-  margin-top: 30px;
-  padding-top: 10px;
-  padding-bottom: 10px;
   text-align: right;
-  color: #AEC3B0;
+  color: #38023B;
+}
+
+.calendar-scroll-wrapper {
+  overflow-y: scroll;
+  height: calc(100vh - 180px);
+}
+
+.calendar-main-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  background-color: #FFFFFF;
+  overflow: hidden;
+}
+
+.calendar-main-grid>span {
+  height: 15.7vh;
+  border: 1px solid #BFE1FF;
+  text-align: center;
+  overflow-y: scroll;
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 1fr;
+  text-align: center;
+  font-size: 16px;
+  color: #D1F8F9;
+  background-color: #38023B;
+  overflow: hidden;
+}
+
+.calendar-weekdays>span {
+  height: 3vh;
+  border: 1px solid #38023B;
+}
+
+.calendar-item {
+  text-align: right;
+  color: #8EB19D;
+  font-weight: bolder;
+}
+
+.calendar-select-button {
+  background-color: inherit;
+  border: None;
+}
+
+.calendar-select-button:hover {
+  color: #8EB19D;
+  border: 2px solid #BFE1FF;
+  box-shadow: 3px 1px 1px #BFE1FF;
 }
