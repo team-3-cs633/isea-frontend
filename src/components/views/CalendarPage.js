@@ -57,12 +57,12 @@ export default function CalendarPage(props) {
    * Set the date in a calendar grid box.
    * 
    * @param {*} epoch the time in epoch ms
-   * @returns a calendar date to display
+   * @returns a calendar date to display as month - day
    */
   function setCalendarDate(epoch) {
     let date = new Date(epoch);
 
-    return <div className="calendar-item">{date.getDate()}</div>;
+    return <div className="calendar-item">{date.getMonth() + 1} - {date.getDate()}</div>;
   }
 
   /**
