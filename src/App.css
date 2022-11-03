@@ -1,5 +1,5 @@
 .app {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   height: 100vh;
   overflow: hidden;
 }
@@ -28,7 +28,7 @@
   padding-left: 50vw;
 }
 
-.search-form-grid>span {
+.search-form-grid > span {
   height: 1vh;
   border: None;
   margin-right: 10px;

@@ -25,7 +25,7 @@
   overflow: hidden;
 }
 
-.view-grid>div {
+.view-grid > div {
   padding: 8px 4px;
   height: calc(100vh - 100px);
 }
@@ -43,21 +43,21 @@
 }
 
 .nav-button {
-  background-color: #8EB19D;
+  background-color: #8eb19d;
 }
 
 .nav-button:hover {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .two-button-column {
   display: grid;
   grid-template-columns: 50% 50%;
-  border: 2px solid #38023B;
+  border: 2px solid #38023b;
   overflow: hidden;
 }
 
-.two-button-column>button {
+.two-button-column > button {
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -65,11 +65,11 @@
 .three-button-column {
   display: grid;
   grid-template-columns: 33% 33% 33%;
-  border: 2px solid #38023B;
+  border: 2px solid #38023b;
   overflow: hidden;
 }
 
-.three-button-column>button {
+.three-button-column > button {
   padding-top: 5px;
   padding-bottom: 5px;
 }
@@ -109,7 +109,7 @@
 
 .login-display {
   margin-top: 10%;
-  margin-left: 25%
+  margin-left: 25%;
 }
 
 .create {
@@ -123,14 +123,14 @@
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 3px;
-  color: #D1F8F9;
+  color: #d1f8f9;
   font-weight: bold;
   font-size: 12px;
-  background: linear-gradient(to bottom right, #4F0354, #38023B);
+  background: linear-gradient(to bottom right, #4f0354, #38023b);
 }
 
 .login-button:hover {
-  color: #AEC3B0;
+  color: #aec3b0;
 }
 
 .create-button {
@@ -142,12 +142,12 @@
   border-radius: 3px;
   font-weight: bold;
   font-size: 12px;
-  color: #D1F8F9;
-  background: linear-gradient(to bottom right, #4F0354, #38023B);
+  color: #d1f8f9;
+  background: linear-gradient(to bottom right, #4f0354, #38023b);
 }
 
 .create-button:hover {
-  color: #AEC3B0
+  color: #aec3b0;
 }
 
 .login-input {
@@ -162,7 +162,7 @@
   font-size: 25px;
   border: none;
   text-align: right;
-  color: #38023B;
+  color: #38023b;
 }
 
 .calendar-scroll-wrapper {
@@ -174,13 +174,13 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-template-rows: repeat(5, 1fr);
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   overflow: hidden;
 }
 
-.calendar-main-grid>span {
+.calendar-main-grid > span {
   height: 15.7vh;
-  border: 1px solid #BFE1FF;
+  border: 1px solid #bfe1ff;
   text-align: center;
   overflow-y: scroll;
 }
@@ -191,19 +191,19 @@
   grid-template-rows: 1fr;
   text-align: center;
   font-size: 16px;
-  color: #D1F8F9;
-  background-color: #38023B;
+  color: #d1f8f9;
+  background-color: #38023b;
   overflow: hidden;
 }
 
-.calendar-weekdays>span {
+.calendar-weekdays > span {
   height: 3vh;
-  border: 1px solid #38023B;
+  border: 1px solid #38023b;
 }
 
 .calendar-item {
   text-align: right;
-  color: #8EB19D;
+  color: #8eb19d;
   font-weight: bolder;
 }
 
@@ -213,7 +213,7 @@
 }
 
 .calendar-select-button:hover {
-  color: #8EB19D;
-  border: 2px solid #BFE1FF;
-  box-shadow: 3px 1px 1px #BFE1FF;
+  color: #8eb19d;
+  border: 2px solid #bfe1ff;
+  box-shadow: 3px 1px 1px #bfe1ff;
 }

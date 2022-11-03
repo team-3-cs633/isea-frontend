@@ -1,14 +1,14 @@
 .event-grid {
   display: grid;
   grid-template-columns: 80% 20%;
-  border-top: 0.5px solid #BFE1FF;
-  border-right: 0.5px solid #BFE1FF;
+  border-top: 0.5px solid #bfe1ff;
+  border-right: 0.5px solid #bfe1ff;
   overflow: hidden;
 }
 
-.event-grid>div {
+.event-grid > div {
   padding: 8px 4px;
-  background-color: #F1FCFD;
+  background-color: #f1fcfd;
 }
 
 .single-event-grid {
@@ -19,18 +19,18 @@
 .event-select-button {
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .event-action {
   padding: 10px;
-  background-color: #8EB19D;
+  background-color: #8eb19d;
 }
 
 .share-submit {
   padding: 10px;
-  background-color: #38023B;
-  color: #8EB19D;
+  background-color: #38023b;
+  color: #8eb19d;
 }
 
 .event-list {
@@ -45,31 +45,30 @@
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 3px;
-  color: #D1F8F9;
+  color: #d1f8f9;
   font-weight: bold;
   font-size: 12px;
-  background: linear-gradient(to bottom right, #4F0354, #38023B);
+  background: linear-gradient(to bottom right, #4f0354, #38023b);
 }
 
 .event-create-button:hover {
-  color: #AEC3B0;
+  color: #aec3b0;
 }
 
 .delete-button {
-  background-color: #C24758;
+  background-color: #c24758;
   width: 100%;
   border: none;
   padding-top: 5px;
   padding-bottom: 5px;
   border-radius: 3px;
-  color: #D1F8F9;
+  color: #d1f8f9;
   font-weight: bold;
   font-size: 12px;
-
 }
 
 .delete-button:hover {
-  color: #AEC3B0;
+  color: #aec3b0;
 }
 
 .date-input-grid {
@@ -79,7 +78,7 @@
   text-align: center;
 }
 
-.date-input-grid>span {
+.date-input-grid > span {
   width: 100%;
 }
 

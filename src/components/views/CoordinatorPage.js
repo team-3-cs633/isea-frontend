@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import ManageEventsList from '../events/ManageEventsList';
-import EventForm from '../events/EventForm';
-import './views.css';
+import React, { useState } from "react";
+import ManageEventsList from "../events/ManageEventsList";
+import EventForm from "../events/EventForm";
+import "./views.css";
 
 /**
  * The display for an Event Coordinator.
- * 
- * @param {*} props the props passed down from the Main function 
+ *
+ * @param {*} props the props passed down from the Main function
  * @returns the coordinator page display
  */
 export default function CoordinatorPage(props) {
@@ -14,17 +14,17 @@ export default function CoordinatorPage(props) {
 
   /**
    * Update the page on button select.
-   * 
+   *
    * @param {*} data the page name to display
    */
   function handlePageUpdate(data) {
-    handlePageChange(data)
+    handlePageChange(data);
     props.handleSelectedIdChange(null);
   }
 
   /**
    * Handle updating events on submit.
-   * 
+   *
    * @param {*} json the data to update
    */
   function handleUpdateEventFormSubmit(json) {
@@ -34,8 +34,8 @@ export default function CoordinatorPage(props) {
 
   /**
    * Display the component based on user selection.
-   * 
-   * @returns the page to display, either the event form for a new event or the 
+   *
+   * @returns the page to display, either the event form for a new event or the
    * page for managing existing events
    */
   function displayPage() {
@@ -65,8 +65,18 @@ export default function CoordinatorPage(props) {
   return (
     <div className="">
       <div className="two-button-column">
-        <button className="nav-button" onClick={() => handlePageUpdate("createEvent")}>Create Event</button>
-        <button className="nav-button" onClick={() => handlePageUpdate("manageEvent")}>Manage Events</button>
+        <button
+          className="nav-button"
+          onClick={() => handlePageUpdate("createEvent")}
+        >
+          Create Event
+        </button>
+        <button
+          className="nav-button"
+          onClick={() => handlePageUpdate("manageEvent")}
+        >
+          Manage Events
+        </button>
       </div>
       {displayPage()}
     </div>
