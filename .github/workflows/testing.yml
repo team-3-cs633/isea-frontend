@@ -2,16 +2,16 @@ name: isea-frontend-tests
 
 on:
   push:
-    branches: '*'
+    branches: "*"
   pull_request:
-    branches: '*'
+    branches: "*"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: install dependencies
-      run: npm install
-    - name : run tests
-      run: CI=true npm test
+      - uses: actions/checkout@v2
+      - name: install dependencies
+        run: npm install
+      - name: run tests
+        run: CI=true npm test

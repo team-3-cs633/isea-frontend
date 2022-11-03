@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 /**
  * A reusable searchbar component.
- * 
+ *
  * @param {*} props the props from the parent component
  * @returns a search bar with a single input field
  */
 export default function SearchBar(props) {
-
   const [formField, handleChangeFormField] = useState("");
 
   /**
@@ -15,11 +14,11 @@ export default function SearchBar(props) {
    */
   useEffect(() => {
     handleChangeFormField("");
-  }, [props.resetSearch])
+  }, [props.resetSearch]);
 
   /**
    * Update the data on search.
-   * 
+   *
    * @param {*} data the search parameters for searching through the array of data
    */
   function handleUpdateOnSearch(data) {
@@ -29,9 +28,14 @@ export default function SearchBar(props) {
 
   return (
     <div className="search-form-grid">
-      <span> <b>Search:</b></span>
       <span>
-        <input className="search-input" type="text"
+        {" "}
+        <b>Search:</b>
+      </span>
+      <span>
+        <input
+          className="search-input"
+          type="text"
           value={formField}
           onChange={(event) => handleUpdateOnSearch(event.target.value)}
         />

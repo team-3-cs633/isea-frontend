@@ -1,52 +1,52 @@
-import React from 'react';
-import './views.css';
+import React from "react";
+import "./views.css";
 
 /**
  * The display for the calendar view.
- * 
+ *
  * The calendar is a 5x7 grid
  * - The columns are the days of the week, starting from Sunday and ending on Saturday
  * - The rows are based on the distance from now
- * 
+ *
  * The calendar will only display future events, where the current day is on the top column
  * and the remaining future dates continue in the typical top to bottom left to right format
- * 
+ *
  * @param {*} props the props passed down from the parent component
  * @returns the calendar page display
  */
 export default function CalendarPage(props) {
-
   /**
    * Filter events to display for a grid cell.
-   * 
+   *
    * @param {*} events the potential events to display
    * @param {*} weekDay the weekday index of the cell (0=sunday, .. 6=saturday)
    * @param {*} index the row index of the grid
    * @returns a list of events with a calendar date or an empty string if there are no matching dates
    */
   function filterEventsByDateCell(events, weekDay, index) {
-    let currentEvents = events.filter(
-      item => getValidCalendarSpotItem(parseInt(item.start_time), weekDay, index)
+    let currentEvents = events.filter((item) =>
+      getValidCalendarSpotItem(parseInt(item.start_time), weekDay, index)
     );
 
     return (
       <div>
         <div>
-          {currentEvents.length > 0 ?
-            setCalendarDate(parseInt(currentEvents[0].start_time))
-            :
-            ""
-          }
+          {currentEvents.length > 0
+            ? setCalendarDate(parseInt(currentEvents[0].start_time))
+            : ""}
         </div>
-        <div> {
-          currentEvents.map(currentEvent => {
+        <div>
+          {" "}
+          {currentEvents.map((currentEvent) => {
             return (
-              <button className="calendar-select-button"
+              <button
+                className="calendar-select-button"
                 key={currentEvent.id}
-                onClick={() => props.handleSelectedIdChange(currentEvent.id)}>
+                onClick={() => props.handleSelectedIdChange(currentEvent.id)}
+              >
                 {currentEvent.description}
               </button>
-            )
+            );
           })}
         </div>
       </div>
@@ -55,19 +55,23 @@ export default function CalendarPage(props) {
 
   /**
    * Set the date in a calendar grid box.
-   * 
+   *
    * @param {*} epoch the time in epoch ms
    * @returns a calendar date to display as month - day
    */
   function setCalendarDate(epoch) {
     let date = new Date(epoch);
 
-    return <div className="calendar-item">{date.getMonth() + 1} - {date.getDate()}</div>;
+    return (
+      <div className="calendar-item">
+        {date.getMonth() + 1} - {date.getDate()}
+      </div>
+    );
   }
 
   /**
    * Determine if the event is valid for the current calendar spot (grid cell).
-   * 
+   *
    * @param {*} epoch the epoch ms timestamp of an event start time
    * @param {*} weekDay the weekday index of the cell (0=sunday, .. 6=saturday)
    * @param {*} index the row index of the grid
@@ -90,17 +94,21 @@ export default function CalendarPage(props) {
     // Since this is based on the number of days in a month, it is currently set to work
     // for all months except Feb.
     if (now.getDate() <= date.getDate() && currentMonth === date.getMonth()) {
-      indexCalculated = Math.floor(((date.getDate() - now.getDate()) + indexOffset) / 7);
+      indexCalculated = Math.floor(
+        (date.getDate() - now.getDate() + indexOffset) / 7
+      );
     } else {
       let base;
 
       if (thirtyMonths.includes(now.getMonth())) {
         base = 30;
       } else {
-        base = 31
+        base = 31;
       }
 
-      indexCalculated = Math.floor((base - now.getDate() + indexOffset + date.getDate()) / 7);
+      indexCalculated = Math.floor(
+        (base - now.getDate() + indexOffset + date.getDate()) / 7
+      );
     }
 
     if (!(indexCalculated === index)) {
@@ -114,7 +122,7 @@ export default function CalendarPage(props) {
       return false;
     }
 
-    if (!([currentMonth, currentMonth + 1].includes(date.getMonth()))) {
+    if (![currentMonth, currentMonth + 1].includes(date.getMonth())) {
       return false;
     }
 
