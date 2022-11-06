@@ -3,18 +3,38 @@ import CalendarPage from './CalendarPage';
 import { apiCallWithVariables } from '../utils/utils';
 import './views.css';
 
+/**
+ * The display for when there is no logged in user.
+ * 
+ * Provides: 
+ * - A calendar view for users
+ * - Account and password formfields for logging in or creating an account
+ * 
+ * @param {*} props the props passed down from the Main function 
+ * @returns the landing page display
+ */
 export default function LandingPage(props) {
   const loginURL = process.env.REACT_APP_BASE_URL + "/users/login"
   const userURL = process.env.REACT_APP_BASE_URL + "/users"
   const [username, handleUsernameChange] = useState("");
   const [password, handlePasswordChange] = useState("");
 
+  /**
+   * Update state based on http request success.
+   * 
+   * @param {*} data the response data from the rquest
+   */
   function onSuccessFunction(data) {
     props.handleUserLogin(data);
     handleUsernameChange("");
     handlePasswordChange("");
   }
 
+  /**
+   * Handle user login.
+   * 
+   * @param {*} event the onclick event from a button click
+   */
   function handleUserLogin(event) {
     event.preventDefault();
 
@@ -25,6 +45,12 @@ export default function LandingPage(props) {
     apiCallWithVariables(loginURL, "POST", data, onSuccessFunction);
   }
 
+  /**
+   * Handle user creation.
+   * 
+   * @param {*} event the onclick event from a button click
+   * @returns null
+   */
   function handleUserCreation(event) {
     if (username.trim().length === 0 || password.trim().length === 0) {
       alert("Username or Password field is blank");
@@ -50,7 +76,7 @@ export default function LandingPage(props) {
             handleSelectedIdChange={props.handleSelectedIdChange}
           />
         </div>
-        <div>
+        <div className="login-display-wrapper">
           <div className="login-display">
             <div className="user-login">
               <span className="username">

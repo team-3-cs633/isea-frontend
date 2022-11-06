@@ -1,6 +1,12 @@
 import React from 'react';
 import './events.css';
 
+/**
+ * The page for handling display for event removal.
+ * 
+ * @param {*} props the props passed in from the parent component
+ * @returns the display of event for removal
+ */
 export default function EventsRemovalPage(props) {
   return (
     <div className="event-list">

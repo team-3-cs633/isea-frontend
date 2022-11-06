@@ -1,6 +1,11 @@
 import './App.css';
 import Main from './components/views/Main';
 
+/**
+ * The entrypoint to the application.
+ * 
+ * @returns the react app
+ */
 function App() {
   return (
     <div className="app">

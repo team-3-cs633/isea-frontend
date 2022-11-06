@@ -17,3 +17,11 @@ button {
 button:hover {
   color: #8EB19D;
 }
+
+select {
+  border: none;
+}
+
+input {
+  width: 100%;
+}

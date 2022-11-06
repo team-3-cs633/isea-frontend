@@ -71,3 +71,18 @@
 .delete-button:hover {
   color: #AEC3B0;
 }
+
+.date-input-grid {
+  display: grid;
+  font-size: 12px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  text-align: center;
+}
+
+.date-input-grid>span {
+  width: 100%;
+}
+
+.date-input-field {
+  width: 100%;
+}
