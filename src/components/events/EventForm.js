@@ -229,7 +229,7 @@ export default function EventForm(props) {
             onChange={(event) => valuePairs[2][1](event.target.value)}
           >
             <option value={""}> Select </option>
-            <option value={"0"}> Midnight </option>
+            <option value={"0"}> 12 AM </option>
             <option value={"1"}> 1 AM </option>
             <option value={"2"}> 2 AM </option>
             <option value={"3"}> 3 AM </option>
@@ -241,7 +241,7 @@ export default function EventForm(props) {
             <option value={"9"}> 9 AM </option>
             <option value={"10"}> 10 AM </option>
             <option value={"11"}> 11 AM </option>
-            <option value={"12"}> Noon </option>
+            <option value={"12"}> 12 PM </option>
             <option value={"13"}> 1 PM </option>
             <option value={"14"}> 2 PM </option>
             <option value={"15"}> 3 PM </option>

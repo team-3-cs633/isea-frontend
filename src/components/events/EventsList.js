@@ -18,8 +18,8 @@ export default function EventList(props) {
     <div className="event-list">
       {props.events.map((currentEvent) => {
         let listItem = (
-          <div>
-            <div key={currentEvent.id}>
+          <div key={currentEvent.id}>
+            <div>
               <EventButton
                 handleSelectedIdChange={props.handleSelectedIdChange}
                 currentEvent={currentEvent}
