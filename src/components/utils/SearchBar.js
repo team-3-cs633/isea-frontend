@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import searchIcon from "../../icons/search_icon.png";
 
 /**
  * A reusable searchbar component.
@@ -30,13 +31,14 @@ export default function SearchBar(props) {
     <div className="search-form-grid">
       <span>
         {" "}
-        <b>Search:</b>
+        <img src={searchIcon} alt="search" width="20" height="20" />
       </span>
       <span>
         <input
           className="search-input"
           type="text"
           value={formField}
+          placeholder="Search"
           onChange={(event) => handleUpdateOnSearch(event.target.value)}
         />
       </span>

@@ -8,7 +8,8 @@
   font-size: 30px;
   font-weight: 600;
   text-align: center;
-  height: 40px;
+  height: 80px;
+  border-bottom: 2px solid #38023b;
 }
 
 .form-grid {
@@ -25,7 +26,6 @@
   margin: 1%;
   font-size: 15px;
   text-align: right;
-  padding-left: 50vw;
 }
 
 .search-form-grid > span {
@@ -36,6 +36,8 @@
 
 .search-input {
   width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .search-placeholder {

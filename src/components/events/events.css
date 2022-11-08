@@ -24,7 +24,13 @@
 
 .event-action {
   padding: 10px;
-  background-color: #8eb19d;
+  background-color: #ffffff;
+  border-radius: 10%;
+}
+
+.event-action.registered {
+  background-color: #0abaff;
+  color: #ffffff;
 }
 
 .share-submit {
@@ -35,7 +41,12 @@
 
 .event-list {
   overflow-y: scroll;
-  height: calc(100vh - 200px);
+  height: 60vh;
+}
+
+.event-button-display {
+  display: grid;
+  grid-template-columns: 90% 10%;
 }
 
 .event-create-button {

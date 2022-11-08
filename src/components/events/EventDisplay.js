@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import { readableDate, readableTime } from "../utils/utils";
+import checkIcon from "../../icons/check_icon.png";
+import shareIcon from "../../icons/share_icon.png";
+import clickedFavoriteIcon from "../../icons/clicked_favorite_icon.png";
+import unClickedFavoriteIcon from "../../icons/unclicked_favorite_icon.png";
 import "./events.css";
 
 /**
@@ -97,14 +101,24 @@ export default function EventDisplay(props) {
         </span>
       </div>
       <div>
+        {}
         {isFuture(props.event.start_time) && (
           <button
-            className="event-action"
+            className={
+              !isRegistered() ? "event-action" : "event-action registered"
+            }
             onClick={() =>
               props.handleRegisterForEvent(props.event.id, !isRegistered())
             }
           >
-            {!isRegistered() ? "Register" : "UnRegister"}
+            {!isRegistered() ? (
+              "Register"
+            ) : (
+              <div>
+                <img src={checkIcon} alt="register" width="12" height="12" />{" "}
+                Registered
+              </div>
+            )}
           </button>
         )}
         <button
@@ -113,14 +127,41 @@ export default function EventDisplay(props) {
             props.handleFavoriteEvent(props.event.id, !isFavorite())
           }
         >
-          {!isFavorite() ? "Favorite" : "Unfavorite"}
+          {!isFavorite() ? (
+            <div>
+              <img
+                src={unClickedFavoriteIcon}
+                alt="register"
+                width="12"
+                height="12"
+              />{" "}
+              Favorite
+            </div>
+          ) : (
+            <div>
+              <img
+                src={clickedFavoriteIcon}
+                alt="register"
+                width="12"
+                height="12"
+              />{" "}
+              Favorite
+            </div>
+          )}
         </button>
         <button
           className="event-action"
           onClick={() => handleShareEnabledChange(!shareEnabled)}
         >
           {" "}
-          {shareEnabled ? "Hide Share" : "Share"}
+          {shareEnabled ? (
+            "Hide Share"
+          ) : (
+            <div>
+              <img src={shareIcon} alt="register" width="12" height="12" />{" "}
+              Share
+            </div>
+          )}
         </button>
         {shareEnabled && (
           <div>

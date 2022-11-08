@@ -63,22 +63,26 @@ export default function CoordinatorPage(props) {
   }
 
   return (
-    <div className="">
+    <div className="view-top-nav-grid">
       <div className="two-button-column">
         <button
-          className="nav-button"
+          className={
+            page === "createEvent" ? "nav-button clicked" : "nav-button"
+          }
           onClick={() => handlePageUpdate("createEvent")}
         >
           Create Event
         </button>
         <button
-          className="nav-button"
+          className={
+            page === "manageEvent" ? "nav-button clicked" : "nav-button"
+          }
           onClick={() => handlePageUpdate("manageEvent")}
         >
           Manage Events
         </button>
       </div>
-      {displayPage()}
+      <div>{displayPage()}</div>
     </div>
   );
 }

@@ -82,22 +82,22 @@ export default function AdminPage(props) {
   }
 
   return (
-    <div className="">
+    <div className="view-top-nav-grid">
       <div className="two-button-column">
         <button
-          className="nav-button"
+          className={page === "users" ? "nav-button clicked" : "nav-button"}
           onClick={() => handlePageChange("users")}
         >
           Manage Users
         </button>
         <button
-          className="nav-button"
+          className={page === "events" ? "nav-button clicked" : "nav-button"}
           onClick={() => handlePageChange("events")}
         >
           Manage Events
         </button>
       </div>
-      {displayPage()}
+      <div>{displayPage()}</div>
     </div>
   );
 }
