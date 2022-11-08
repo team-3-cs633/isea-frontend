@@ -22,6 +22,11 @@
   background-color: #ffffff;
 }
 
+.event-select-button.clicked {
+  background-color: #f1fcfd;
+  border: none;
+}
+
 .event-action {
   padding: 10px;
   background-color: #ffffff;
@@ -47,6 +52,12 @@
 .event-button-display {
   display: grid;
   grid-template-columns: 90% 10%;
+}
+
+.event-button-text-grid {
+  display: grid;
+  grid-template-columns: 60% 20% 20%;
+  text-align: left;
 }
 
 .event-create-button {

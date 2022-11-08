@@ -35,7 +35,7 @@ export default function CalendarPage(props) {
             ? setCalendarDate(parseInt(currentEvents[0].start_time))
             : ""}
         </div>
-        <div>
+        <div className="scroll-y-wrapper">
           {" "}
           {currentEvents.map((currentEvent) => {
             return (
@@ -132,13 +132,13 @@ export default function CalendarPage(props) {
   return (
     <div className="calendar-complete">
       <div className="calendar-weekdays">
-        <span>Sunday</span>
-        <span>Monday</span>
-        <span>Tuesday</span>
-        <span>Wednesday</span>
-        <span>Thursday</span>
-        <span>Friday</span>
-        <span>Saturday</span>
+        <span>Sun</span>
+        <span>Mon</span>
+        <span>Tue</span>
+        <span>Wed</span>
+        <span>Thu</span>
+        <span>Fri</span>
+        <span>Sat</span>
       </div>
       <div className="calendar-main-grid">
         <span>{filterEventsByDateCell(props.events, 0, 0)}</span>

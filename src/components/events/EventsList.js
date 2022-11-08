@@ -23,6 +23,7 @@ export default function EventList(props) {
               <EventButton
                 handleSelectedIdChange={props.handleSelectedIdChange}
                 currentEvent={currentEvent}
+                selectedId={props.selectedId}
                 imageIcon={
                   currentEvent.id !== props.selectedId ? expandIcon : closeIcon
                 }
