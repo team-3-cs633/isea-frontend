@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import clockIcon from "../../icons/clock_icon.png";
 import "./events.css";
 
 /**
@@ -15,12 +16,10 @@ export default function EventForm(props) {
   const [eventLink, handleEventLinkChange] = useState("");
   const [startMonth, handleStartMonthChange] = useState("");
   const [startDay, handleStartDayChange] = useState("");
-  const [startHour, handleStartHourChange] = useState("");
-  const [startMinute, handleStartMinuteChange] = useState("");
+  const [startTime, handleStartTimeChange] = useState("");
   const [endMonth, handleEndMonthChange] = useState("");
   const [endDay, handleEndDayChange] = useState("");
-  const [endHour, handleEndHourChange] = useState("");
-  const [endMinute, handleEndMinuteChange] = useState("");
+  const [endTime, handleEndTimeChange] = useState("");
 
   /**
    * Check to see if props.event exists.
@@ -32,19 +31,12 @@ export default function EventForm(props) {
     if (props.event) {
       let startDateObject = new Date(parseInt(props.event.start_time));
       let endDateObject = new Date(parseInt(props.event.end_time));
-
       handleStartMonthChange(startDateObject.getMonth());
       handleStartDayChange(startDateObject.getDate());
-      handleStartHourChange(startDateObject.getHours());
-      handleStartMinuteChange(
-        startDateObject.getMinutes() === 0 ? "00" : startDateObject.getMinutes()
-      );
+      handleStartTimeChange(getTimeFromDateObject(startDateObject));
       handleEndMonthChange(endDateObject.getMonth());
       handleEndDayChange(endDateObject.getDate());
-      handleEndHourChange(endDateObject.getHours());
-      handleEndMinuteChange(
-        endDateObject.getMinutes() === 0 ? "00" : endDateObject.getMinutes()
-      );
+      handleEndTimeChange(getTimeFromDateObject(endDateObject));
       handleDescriptionChange(props.event.description);
       handleCategoryChange(props.event.category);
       handleLocationChange(props.event.location);
@@ -67,12 +59,22 @@ export default function EventForm(props) {
     handleEventLinkChange("");
     handleStartMonthChange("");
     handleStartDayChange("");
-    handleStartHourChange("");
-    handleStartMinuteChange("");
+    handleStartTimeChange("");
     handleEndMonthChange("");
     handleEndDayChange("");
-    handleEndHourChange("");
-    handleEndMinuteChange("");
+    handleEndTimeChange("");
+  }
+
+  function getTimeFromDateObject(dateObject) {
+    let hours =
+      dateObject.getHours() < 10
+        ? "0" + dateObject.getHours()
+        : dateObject.getHours();
+    let minutes =
+      dateObject.getMinutes() < 10
+        ? "0" + dateObject.getMinutes()
+        : dateObject.getMinutes();
+    return hours + ":" + minutes;
   }
 
   /**
@@ -105,22 +107,13 @@ export default function EventForm(props) {
    *
    * @param {*} month the month of the date
    * @param {*} day the day of the date
-   * @param {*} hour the hour of the day
-   * @param {*} minute the minute of the hour
+   * @param {*} time the hour and minute of the day
    * @returns a date object
    */
-  function getDateFromStringParts(month, day, hour, minute) {
+  function getDateFromStringParts(month, day, time) {
     let now = new Date();
     let dateString =
-      day +
-      " " +
-      getMonthString(month) +
-      " " +
-      now.getFullYear() +
-      " " +
-      hour +
-      ":" +
-      minute;
+      day + " " + getMonthString(month) + " " + now.getFullYear() + " " + time;
 
     return Date.parse(dateString);
   }
@@ -146,15 +139,10 @@ export default function EventForm(props) {
       return;
     }
 
-    let startTime = getDateFromStringParts(
-      startMonth,
-      startDay,
-      startHour,
-      startMinute
-    );
-    let endTime = getDateFromStringParts(endMonth, endDay, endHour, endMinute);
+    let startTimeFull = getDateFromStringParts(startMonth, startDay, startTime);
+    let endTimeFull = getDateFromStringParts(endMonth, endDay, endTime);
 
-    if (!(startTime && endTime)) {
+    if (!(startTimeFull && endTimeFull)) {
       return;
     }
 
@@ -163,8 +151,8 @@ export default function EventForm(props) {
       category: category,
       location: location,
       cost: cost,
-      start_time: startTime,
-      end_time: endTime,
+      start_time: startTimeFull,
+      end_time: endTimeFull,
       event_link: eventLink,
     };
 
@@ -192,13 +180,16 @@ export default function EventForm(props) {
   function dateInputField(valuePairs) {
     return (
       <div className="date-input-grid">
-        <span>Month</span>
+        <span className="right-aligned">
+          <b>{valuePairs[0][0]}</b>
+        </span>
         <span>
           <select
-            value={valuePairs[0][0]}
-            onChange={(event) => valuePairs[0][1](event.target.value)}
+            value={valuePairs[0][1]}
+            onChange={(event) => valuePairs[0][2](event.target.value)}
+            className="month-select-box"
           >
-            <option value={""}> Select </option>
+            <option value={""}> Month </option>
             <option value={"0"}> Jan </option>
             <option value={"1"}> Feb </option>
             <option value={"2"}> Mar </option>
@@ -213,59 +204,81 @@ export default function EventForm(props) {
             <option value={"11"}> Dec </option>
           </select>
         </span>
-        <span>Day</span>
         <span>
           <input
             className="date-input-field"
-            type="text"
+            type="number"
+            placeholder="Day"
             value={valuePairs[1][0]}
             onChange={(event) => valuePairs[1][1](event.target.value)}
           />
         </span>
-        <span>Hour</span>
+      </div>
+    );
+  }
+
+  function timeInputField(valuePairs) {
+    return (
+      <div className="time-input-grid">
         <span>
-          <select
-            value={valuePairs[2][0]}
-            onChange={(event) => valuePairs[2][1](event.target.value)}
-          >
-            <option value={""}> Select </option>
-            <option value={"0"}> 12 AM </option>
-            <option value={"1"}> 1 AM </option>
-            <option value={"2"}> 2 AM </option>
-            <option value={"3"}> 3 AM </option>
-            <option value={"4"}> 4 AM </option>
-            <option value={"5"}> 5 AM </option>
-            <option value={"6"}> 6 AM </option>
-            <option value={"7"}> 7 AM </option>
-            <option value={"8"}> 8 AM </option>
-            <option value={"9"}> 9 AM </option>
-            <option value={"10"}> 10 AM </option>
-            <option value={"11"}> 11 AM </option>
-            <option value={"12"}> 12 PM </option>
-            <option value={"13"}> 1 PM </option>
-            <option value={"14"}> 2 PM </option>
-            <option value={"15"}> 3 PM </option>
-            <option value={"16"}> 4 PM </option>
-            <option value={"17"}> 5 PM </option>
-            <option value={"18"}> 6 PM </option>
-            <option value={"19"}> 7 PM </option>
-            <option value={"20"}> 8 PM </option>
-            <option value={"21"}> 9 PM </option>
-            <option value={"22"}> 10 PM </option>
-            <option value={"23"}> 11 PM </option>
-          </select>
+          <img src={clockIcon} alt="update" width="15" height="15" />{" "}
+          <b>{valuePairs[0]}</b>
         </span>
-        <span>Minute</span>
         <span>
           <select
-            value={valuePairs[3][0]}
-            onChange={(event) => valuePairs[3][1](event.target.value)}
+            value={valuePairs[1]}
+            onChange={(event) => valuePairs[2](event.target.value)}
+            className="time-input-field"
+            size={4}
           >
-            <option value={""}> Select </option>
-            <option value={"00"}> 00 </option>
-            <option value={"15"}> 15 </option>
-            <option value={"30"}> 30 </option>
-            <option value={"45"}> 45 </option>
+            <option value={"00:00"}> 00:00 </option>
+            <option value={"00:30"}> 00:30 </option>
+            <option value={"01:00"}> 01:00 </option>
+            <option value={"01:30"}> 01:30 </option>
+            <option value={"02:00"}> 02:00 </option>
+            <option value={"02:30"}> 02:30 </option>
+            <option value={"03:00"}> 03:00 </option>
+            <option value={"03:30"}> 03:30 </option>
+            <option value={"04:00"}> 04:00 </option>
+            <option value={"04:30"}> 04:30 </option>
+            <option value={"05:00"}> 05:00 </option>
+            <option value={"05:30"}> 05:30 </option>
+            <option value={"06:00"}> 06:00 </option>
+            <option value={"06:30"}> 06:30 </option>
+            <option value={"07:00"}> 07:00 </option>
+            <option value={"07:30"}> 07:30 </option>
+            <option value={"08:00"}> 08:00 </option>
+            <option value={"08:30"}> 08:30 </option>
+            <option value={"09:00"}> 09:00 </option>
+            <option value={"09:30"}> 09:30 </option>
+            <option value={"10:00"}> 10:00 </option>
+            <option value={"10:30"}> 10:30 </option>
+            <option value={"11:00"}> 11:00 </option>
+            <option value={"11:30"}> 11:30 </option>
+            <option value={"12:00"}> 12:00 </option>
+            <option value={"12:30"}> 12:30 </option>
+            <option value={"13:00"}> 13:00 </option>
+            <option value={"13:30"}> 13:30 </option>
+            <option value={"14:00"}> 14:00 </option>
+            <option value={"14:30"}> 14:30 </option>
+            <option value={"15:00"}> 15:00 </option>
+            <option value={"15:30"}> 15:30 </option>
+            <option value={"16:00"}> 16:00 </option>
+            <option value={"16:30"}> 16:30 </option>
+            <option value={"17:00"}> 17:00 </option>
+            <option value={"17:30"}> 17:30 </option>
+            <option value={"18:00"}> 18:00 </option>
+            <option value={"18:30"}> 18:30 </option>
+            <option value={"19:00"}> 19:00 </option>
+            <option value={"19:30"}> 19:30 </option>
+            <option value={"20:00"}> 20:00 </option>
+            <option value={"20:30"}> 20:30 </option>
+            <option value={"21:00"}> 21:00 </option>
+            <option value={"21:30"}> 21:30 </option>
+            <option value={"22:00"}> 22:00 </option>
+            <option value={"22:30"}> 22:30 </option>
+            <option value={"23:00"}> 23:00 </option>
+            <option value={"23:30"}> 23:30 </option>
           </select>
         </span>
       </div>
@@ -275,72 +288,80 @@ export default function EventForm(props) {
   return (
     <div>
       <form onSubmit={handeEventSubmit}>
-        <div className="form-grid">
-          <span> Description </span>
-          <span>
+        <div className="event-form-grid">
+          <div className="from-form-field">
+            {dateInputField([
+              ["From", startMonth, handleStartMonthChange],
+              [startDay, handleStartDayChange],
+            ])}
+          </div>
+          <div className="to-form-field">
+            {dateInputField([
+              ["To", endMonth, handleEndMonthChange],
+              [endDay, handleEndDayChange],
+            ])}
+          </div>
+          <div className="start-form-field">
+            {timeInputField(["Start Time", startTime, handleStartTimeChange])}
+          </div>
+          <div className="stop-form-field">
+            {timeInputField(["Stop Time", endTime, handleEndTimeChange])}
+          </div>
+          <div className="location-form-field">
             <input
               type="text"
-              value={description}
-              onChange={(event) => handleDescriptionChange(event.target.value)}
-            />
-          </span>
-          <span> Category </span>
-          <span>
-            <input
-              type="text"
-              value={category}
-              onChange={(event) => handleCategoryChange(event.target.value)}
-            />
-          </span>
-          <span> Location </span>
-          <span>
-            <input
-              type="text"
+              className="location-input-box"
               value={location}
+              placeholder="Location"
               onChange={(event) => handleLocationChange(event.target.value)}
             />
-          </span>
-          <span> Cost </span>
-          <span>
+          </div>
+          <div className="description-form-field">
+            <div>
+              <b>Description</b>
+            </div>
+            <textarea
+              className="description-input-box"
+              value={description}
+              placeholder="Description"
+              onChange={(event) => handleDescriptionChange(event.target.value)}
+            />
+          </div>
+          <div className="category-form-field">
             <input
               type="text"
+              className="category-input-box"
+              value={category}
+              placeholder="Category"
+              onChange={(event) => handleCategoryChange(event.target.value)}
+            />
+          </div>
+          <div className="cost-form-field">
+            <input
+              type="text"
+              className="cost-input-box"
               value={cost}
+              placeholder="Cost"
               onChange={(event) => handleCostChange(event.target.value)}
             />
-          </span>
-          <span> Start Time </span>
-          <span>
-            {dateInputField([
-              [startMonth, handleStartMonthChange],
-              [startDay, handleStartDayChange],
-              [startHour, handleStartHourChange],
-              [startMinute, handleStartMinuteChange],
-            ])}
-          </span>
-          <span> End Time </span>
-          <span>
-            {dateInputField([
-              [endMonth, handleEndMonthChange],
-              [endDay, handleEndDayChange],
-              [endHour, handleEndHourChange],
-              [endMinute, handleEndMinuteChange],
-            ])}
-          </span>
-          <span> Event Link</span>
-          <span>
+          </div>
+          <div className="link-form-field">
             <input
               type="text"
+              className="link-input-box"
               value={eventLink}
+              placeholder="Event Link"
               onChange={(event) => handleEventLinkChange(event.target.value)}
             />
-          </span>
+          </div>
         </div>
-        <div>
+        <div className="submit-button-display">
+          <span></span>
           <span>
             <input
               type="submit"
               className="event-create-button"
-              value="submit"
+              value="Submit"
             />
           </span>
         </div>

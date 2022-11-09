@@ -35,13 +35,12 @@
 }
 
 .search-input {
-  width: 100%;
+  width: 95%;
   padding-top: 5px;
   padding-bottom: 5px;
-}
-
-.search-placeholder {
-  height: 1vh;
-  margin: 1%;
-  font-size: 15px;
+  background-image: url("../src/icons/search_icon.png");
+  background-repeat: no-repeat;
+  background-size: 20px;
+  padding-left: 25px;
+  border: 1px solid #38023b;
 }

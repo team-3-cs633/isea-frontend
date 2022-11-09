@@ -88,8 +88,8 @@ export default function AdminPage(props) {
 
   function updateUsersAfterRemoval(data) {
     handleUsersChange((oldData) =>
-    oldData.filter((item) => item.id !== data.id)
-  );
+      oldData.filter((item) => item.id !== data.id)
+    );
   }
 
   /**

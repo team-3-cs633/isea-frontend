@@ -15,7 +15,7 @@
 
 .user-role-display.admin {
   grid-area: role;
-  color: red;
+  color: #c24758;
 }
 
 .user-role-display.coordinator {
