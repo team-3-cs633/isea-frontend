@@ -57,6 +57,7 @@
 .submit-button-display {
   display: grid;
   grid-template-columns: 85% 15%;
+  margin-right: 10px;
 }
 
 .event-button-text-grid {

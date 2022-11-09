@@ -373,7 +373,7 @@ export default function EventForm(props) {
             <input
               type="submit"
               className="event-create-button"
-              value="Submit"
+              value={props.event ? "Modify" : "Create"}
             />
           </span>
         </div>
