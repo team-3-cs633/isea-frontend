@@ -86,6 +86,12 @@ export default function AdminPage(props) {
     return handleUsersChange(result);
   }
 
+  function updateUsersAfterRemoval(data) {
+    handleUsersChange((oldData) =>
+    oldData.filter((item) => item.id !== data.id)
+  );
+  }
+
   /**
    * Remove a user from the list of valid users.
    *
@@ -100,7 +106,7 @@ export default function AdminPage(props) {
     };
 
     if (toSubmit) {
-      apiCallWithVariables(url, "DELETE", body, userQuery);
+      apiCallWithVariables(url, "DELETE", body, updateUsersAfterRemoval);
     }
   }
 

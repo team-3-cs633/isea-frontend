@@ -51,7 +51,7 @@ export default function UsersRemovalPage(props) {
                       {currentUser.user_role_id ===
                       process.env.REACT_APP_COORDINATOR_ROLE_UUID
                         ? "events listed"
-                        : currentUser.metric ? "registered events": ""}
+                        : currentUser.metric !== null ? "registered events": ""}
                     </div>
                   )}
                 </div>
