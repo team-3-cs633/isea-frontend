@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { apiCall, apiCallWithVariables } from "../utils/utils";
 import EventsRemovalPage from "../events/EventsRemovalPage";
 import UsersRemovalPage from "../users/UsersRemovalPage";
+import userIcon from "../../icons/user_icon.png";
+import updateIcon from "../../icons/update_icon.png";
 import "./views.css";
 
 /**
@@ -35,12 +37,52 @@ export default function AdminPage(props) {
   }
 
   /**
+   * Get the registration data of a user and append the count to the user object.
+   *
+   * @param {*} user the user data
+   * @returns the user object with the updated metric data
+   */
+  function handleUserRegistrationQuery(user) {
+    let url = userURL + "/" + user.id + "/registration";
+    apiCall(url, "GET", updateUserMetric.bind(user));
+    return user;
+  }
+
+  function updateUserMetric(data) {
+    this["metric"] = data.length;
+    return this;
+  }
+
+  /**
+   * Get the number of events a coordinator has created.
+   *
+   * @param {*} user the coordinator user object
+   * @param {*} data the events data
+   * @returns the number of events a coordinator has created
+   */
+  function getCoordinatorEventCount(user, data) {
+    let result = data.filter((item) => item.create_user_id === user.id);
+    return result.length;
+  }
+
+  /**
    * Update the users based on a query response.
    *
    * @param {*} data the new user data from the query after a change
    */
   function handleUpdateUsersFromQuery(data) {
-    handleUsersChange(data);
+    let result = data.map((item) => {
+      if (item.user_role_id === process.env.REACT_APP_COORDINATOR_ROLE_UUID) {
+        let eventCount = getCoordinatorEventCount(item, props.events);
+        item["metric"] = eventCount;
+      } else if (item.user_role_id === process.env.REACT_APP_USER_ROLE_UUID) {
+        handleUserRegistrationQuery(item);
+      }
+
+      return item;
+    });
+
+    return handleUsersChange(result);
   }
 
   /**
@@ -48,7 +90,7 @@ export default function AdminPage(props) {
    *
    * @param {*} userId the id of the user to remove
    */
-  function handleRemoveUser(userId) {
+  function handleRemoveUser(userId, toSubmit) {
     let url = userURL;
 
     let body = {
@@ -56,7 +98,9 @@ export default function AdminPage(props) {
       requester_id: props.user.id,
     };
 
-    apiCallWithVariables(url, "DELETE", body, userQuery);
+    if (toSubmit) {
+      apiCallWithVariables(url, "DELETE", body, userQuery);
+    }
   }
 
   /**
@@ -88,13 +132,15 @@ export default function AdminPage(props) {
           className={page === "users" ? "nav-button clicked" : "nav-button"}
           onClick={() => handlePageChange("users")}
         >
-          Manage Users
+          <img src={userIcon} alt="users" width="15" height="15" />
+          <div>Manage Users</div>
         </button>
         <button
           className={page === "events" ? "nav-button clicked" : "nav-button"}
           onClick={() => handlePageChange("events")}
         >
-          Manage Events
+          <img src={updateIcon} alt="events" width="15" height="15" />
+          <div>Manage Events</div>
         </button>
       </div>
       <div>{displayPage()}</div>

@@ -42,9 +42,10 @@ export function handleUpdateOnSearch(searchArray, data) {
  * @param {*} url the url to make a request to
  * @param {*} method the request method (POST, GET, DELETE, etc.)
  * @param {*} onSuccessFunction the callback function use to handle the response data
+ * @returns the http response as a Promise
  */
 export function apiCall(url, method, onSuccessFunction) {
-  fetch(url, {
+  let result = fetch(url, {
     method: method,
     headers: {
       Accept: "application/json",
@@ -58,7 +59,10 @@ export function apiCall(url, method, onSuccessFunction) {
       }
 
       onSuccessFunction(json);
+      return json;
     });
+
+  return result;
 }
 
 /**
