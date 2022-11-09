@@ -48,6 +48,12 @@ export default function AdminPage(props) {
     return user;
   }
 
+  /**
+   * Update a user object with a metric.
+   * 
+   * @param {*} data the user registration response
+   * @returns an updated user object with a metric value
+   */
   async function updateUserMetric(data) {
     this["metric"] = data.length;
     return await this;
@@ -86,6 +92,11 @@ export default function AdminPage(props) {
     return handleUsersChange(result);
   }
 
+  /**
+   * Update the users after a removal without re-querying for data.
+   * 
+   * @param {*} data the response from a user removal query
+   */
   function updateUsersAfterRemoval(data) {
     handleUsersChange((oldData) =>
       oldData.filter((item) => item.id !== data.id)

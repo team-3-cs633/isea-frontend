@@ -65,6 +65,12 @@ export default function EventForm(props) {
     handleEndTimeChange("");
   }
 
+  /**
+   * Get the time from a date object.
+   * 
+   * @param {*} dateObject the Date object to extract the time from
+   * @returns  hh:mm
+   */
   function getTimeFromDateObject(dateObject) {
     let hours =
       dateObject.getHours() < 10
@@ -175,7 +181,7 @@ export default function EventForm(props) {
    * Create a date input field.
    *
    * @param {*} valuePairs the variables and associated update functions to the input fields
-   * @returns a date imput field
+   * @returns a date input field
    */
   function dateInputField(valuePairs) {
     return (
@@ -217,6 +223,12 @@ export default function EventForm(props) {
     );
   }
 
+  /**
+   * Create a time input field.
+   * 
+   * @param {*} valuePairs the variables and associated update functions to the input fields
+   * @returns a time input field
+   */
   function timeInputField(valuePairs) {
     return (
       <div className="time-input-grid">
