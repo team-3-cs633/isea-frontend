@@ -48,9 +48,9 @@ export default function AdminPage(props) {
     return user;
   }
 
-  function updateUserMetric(data) {
+  async function updateUserMetric(data) {
     this["metric"] = data.length;
-    return this;
+    return await this;
   }
 
   /**
@@ -70,13 +70,14 @@ export default function AdminPage(props) {
    *
    * @param {*} data the new user data from the query after a change
    */
-  function handleUpdateUsersFromQuery(data) {
+  async function handleUpdateUsersFromQuery(data) {
     let result = data.map((item) => {
       if (item.user_role_id === process.env.REACT_APP_COORDINATOR_ROLE_UUID) {
         let eventCount = getCoordinatorEventCount(item, props.events);
         item["metric"] = eventCount;
       } else if (item.user_role_id === process.env.REACT_APP_USER_ROLE_UUID) {
-        handleUserRegistrationQuery(item);
+        let updated = handleUserRegistrationQuery(item);
+        item = updated;
       }
 
       return item;
