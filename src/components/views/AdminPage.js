@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { apiCall, apiCallWithVariables } from '../utils/utils';
-import EventsRemovalPage from '../events/EventsRemovalPage';
-import UsersRemovalPage from '../users/UsersRemovalPage';
-import './views.css';
+import React, { useState, useEffect } from "react";
+import { apiCall, apiCallWithVariables } from "../utils/utils";
+import EventsRemovalPage from "../events/EventsRemovalPage";
+import UsersRemovalPage from "../users/UsersRemovalPage";
+import "./views.css";
 
 /**
  * The display for an Application Administrator.
- * 
- * @param {*} props the props passed down from the Main function 
+ *
+ * @param {*} props the props passed down from the Main function
  * @returns the admin page display
  */
 export default function AdminPage(props) {
@@ -25,7 +25,7 @@ export default function AdminPage(props) {
 
   /**
    * Query for user data.
-   * 
+   *
    * This is here and not in main because only the admin has access
    * to user information and it did not need to be pulled into the main component
    */
@@ -36,7 +36,7 @@ export default function AdminPage(props) {
 
   /**
    * Update the users based on a query response.
-   * 
+   *
    * @param {*} data the new user data from the query after a change
    */
   function handleUpdateUsersFromQuery(data) {
@@ -45,15 +45,15 @@ export default function AdminPage(props) {
 
   /**
    * Remove a user from the list of valid users.
-   * 
+   *
    * @param {*} userId the id of the user to remove
    */
   function handleRemoveUser(userId) {
-    let url = userURL
+    let url = userURL;
 
     let body = {
-      "user_id": userId,
-      "requester_id": props.user.id,
+      user_id: userId,
+      requester_id: props.user.id,
     };
 
     apiCallWithVariables(url, "DELETE", body, userQuery);
@@ -61,7 +61,7 @@ export default function AdminPage(props) {
 
   /**
    * Select the management component to display.
-   * 
+   *
    * @returns the removal page based on the current user selection
    */
   function displayPage() {
@@ -76,10 +76,7 @@ export default function AdminPage(props) {
 
     if (page === "users") {
       return (
-        <UsersRemovalPage
-          users={users}
-          handleRemoveUser={handleRemoveUser}
-        />
+        <UsersRemovalPage users={users} handleRemoveUser={handleRemoveUser} />
       );
     }
   }
@@ -87,8 +84,18 @@ export default function AdminPage(props) {
   return (
     <div className="">
       <div className="two-button-column">
-        <button className="nav-button" onClick={() => handlePageChange("users")}>Manage Users</button>
-        <button className="nav-button" onClick={() => handlePageChange("events")}>Manage Events</button>
+        <button
+          className="nav-button"
+          onClick={() => handlePageChange("users")}
+        >
+          Manage Users
+        </button>
+        <button
+          className="nav-button"
+          onClick={() => handlePageChange("events")}
+        >
+          Manage Events
+        </button>
       </div>
       {displayPage()}
     </div>
