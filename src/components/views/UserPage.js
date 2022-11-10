@@ -11,7 +11,7 @@ import "./views.css";
 export default function UserPage(props) {
   return (
     <div className="view-top-nav-grid">
-      <div className="three-button-column">
+      <div className="four-button-column">
         <button className="nav-button" onClick={() => props.handleEventQuery()}>
           All Events
         </button>
@@ -26,6 +26,12 @@ export default function UserPage(props) {
           onClick={() => props.handleUserEventQuery("favorite")}
         >
           Favorite Events
+        </button>
+        <button
+          className="nav-button"
+          onClick={() => props.handleUserEventQuery("suggestion")}
+        >
+          Suggested Events
         </button>
       </div>
       <div>

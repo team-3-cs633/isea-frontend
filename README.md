@@ -24,7 +24,7 @@ Run `npx prettier --write .`
 
 ## UI Component Diagram
 
-![UI Component Diagram](ui_component_diagram.png)
+![UI Component Diagram](./img/ui_component_diagram.png)
 
 ## Search Functionality Implementation
 
@@ -41,5 +41,5 @@ The search within the UI is setup as key:value pairs
 
 #### Examples:
 
-![Category Search Example](search_category.png)  
-![Cost Search Example](search_cost.png)
+![Category Search Example](./img/search_category.png)  
+![Cost Search Example](./img/search_cost.png)

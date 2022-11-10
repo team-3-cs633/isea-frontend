@@ -4,5 +4,5 @@ ENV PATH=$PATH:/node_modules/.bin
 WORKDIR /app
 ADD . /app
 RUN npm install
-EXPOSE 80
+EXPOSE 443
 CMD ["npm", "start"]

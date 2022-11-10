@@ -244,7 +244,7 @@ export default function Main() {
       url = url + "/" + user.id + "/" + data;
     }
 
-    if (data === "registration") {
+    if (data === "favorite") {
       apiCall(url, "GET", handleUpdateEventListOnlyFuture);
     } else {
       apiCall(url, "GET", handleUpdateEventList);

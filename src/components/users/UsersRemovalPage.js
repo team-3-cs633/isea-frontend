@@ -16,7 +16,7 @@ export default function UsersRemovalPage(props) {
               className="event-select-button"
               onClick={() => props.handleRemoveUser(currentUser.id)}
             >
-              <b>UserName:</b> {currentUser.username}| <b>User Role:</b>{" "}
+              <b>Username:</b> {currentUser.username}| <b>User Role:</b>{" "}
               {currentUser.role_name}
             </button>
           </div>
