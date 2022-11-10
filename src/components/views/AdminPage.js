@@ -50,7 +50,7 @@ export default function AdminPage(props) {
 
   /**
    * Update a user object with a metric.
-   * 
+   *
    * @param {*} data the user registration response
    * @returns an updated user object with a metric value
    */
@@ -94,7 +94,7 @@ export default function AdminPage(props) {
 
   /**
    * Update the users after a removal without re-querying for data.
-   * 
+   *
    * @param {*} data the response from a user removal query
    */
   function updateUsersAfterRemoval(data) {

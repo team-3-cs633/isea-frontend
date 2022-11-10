@@ -540,7 +540,7 @@ export default function Main() {
           />
         </div>
         <div className="view-grid">
-          <div className="scroll-y-wrapper">
+          <div>
             <CalendarPage
               events={searchEvents}
               handleSelectedIdChange={handleSelectedIdChange}

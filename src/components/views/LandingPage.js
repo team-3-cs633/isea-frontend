@@ -70,7 +70,7 @@ export default function LandingPage(props) {
       <div></div>
       <div></div>
       <div className="view-grid">
-        <div className="scroll-y-wrapper">
+        <div>
           <CalendarPage
             events={props.events}
             handleSelectedIdChange={props.handleSelectedIdChange}

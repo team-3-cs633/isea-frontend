@@ -67,7 +67,7 @@ export default function EventForm(props) {
 
   /**
    * Get the time from a date object.
-   * 
+   *
    * @param {*} dateObject the Date object to extract the time from
    * @returns  hh:mm
    */
@@ -225,7 +225,7 @@ export default function EventForm(props) {
 
   /**
    * Create a time input field.
-   * 
+   *
    * @param {*} valuePairs the variables and associated update functions to the input fields
    * @returns a time input field
    */

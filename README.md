@@ -22,12 +22,11 @@ Run `npm test`
 
 Run `npx prettier --write .`
 
-## Compatibility  
+## Compatibility
 
 The website is best viewed using a unix operating system and the Firefox browser.
 
 **Note:** The combination of a Windows operating system and Google Chrome browsers are particularly bad
-
 
 ## UI Component Diagram
 
