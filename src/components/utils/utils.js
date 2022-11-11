@@ -54,8 +54,8 @@ export function apiCall(url, method, onSuccessFunction) {
   })
     .then((res) => res.json())
     .then((json) => {
-      if (json.errors) {
-        console.log(json.errors);
+      if (json.error) {
+        console.log(json.error);
       }
 
       onSuccessFunction(json);
@@ -84,8 +84,8 @@ export function apiCallWithVariables(url, method, data, onSuccessFunction) {
   })
     .then((res) => res.json())
     .then((json) => {
-      if (json.errors) {
-        console.log(json.errors);
+      if (json.error) {
+        console.log(json.error);
       }
 
       onSuccessFunction(json);
