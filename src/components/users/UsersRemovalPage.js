@@ -1,4 +1,5 @@
 import React from "react";
+import "./users.css";
 
 /**
  * The page for handling display for user removal.
@@ -7,17 +8,56 @@ import React from "react";
  * @returns the display of users for removal
  */
 export default function UsersRemovalPage(props) {
+  function isAdmin(user) {
+    return user.user_role_id === process.env.REACT_APP_ADMIN_ROLE_UUID
+      ? true
+      : false;
+  }
+
   return (
     <div className="events-list">
       {props.users.map((currentUser) => {
         return (
           <div key={currentUser.id}>
             <button
-              className="event-select-button"
-              onClick={() => props.handleRemoveUser(currentUser.id)}
+              className={
+                isAdmin(currentUser) ? "admin-display" : "event-select-button"
+              }
+              onClick={() =>
+                props.handleRemoveUser(currentUser.id, !isAdmin(currentUser))
+              }
             >
-              <b>Username:</b> {currentUser.username}| <b>User Role:</b>{" "}
-              {currentUser.role_name}
+              <div className="users-display-grid">
+                <div className="user-name-display">{currentUser.username}</div>
+                <div
+                  className={
+                    "user-role-display" +
+                    (currentUser.user_role_id ===
+                    process.env.REACT_APP_ADMIN_ROLE_UUID
+                      ? " admin"
+                      : currentUser.user_role_id ===
+                        process.env.REACT_APP_COORDINATOR_ROLE_UUID
+                      ? " coordinator"
+                      : " user")
+                  }
+                >
+                  {currentUser.role_name}
+                </div>
+                <div className="user-metric-display">
+                  {currentUser.user_role_id !==
+                    process.env.REACT_APP_ADMIN_ROLE_UUID && (
+                    <div>
+                      <b> {currentUser.metric} </b>{" "}
+                      {currentUser.user_role_id ===
+                      process.env.REACT_APP_COORDINATOR_ROLE_UUID
+                        ? "events listed"
+                        : currentUser.metric !== null
+                        ? "registered events"
+                        : ""}
+                    </div>
+                  )}
+                </div>
+              </div>
             </button>
           </div>
         );

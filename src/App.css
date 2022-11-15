@@ -8,7 +8,8 @@
   font-size: 30px;
   font-weight: 600;
   text-align: center;
-  height: 40px;
+  height: 80px;
+  border-bottom: 2px solid #38023b;
 }
 
 .form-grid {
@@ -25,7 +26,6 @@
   margin: 1%;
   font-size: 15px;
   text-align: right;
-  padding-left: 50vw;
 }
 
 .search-form-grid > span {
@@ -35,11 +35,12 @@
 }
 
 .search-input {
-  width: 100%;
-}
-
-.search-placeholder {
-  height: 1vh;
-  margin: 1%;
-  font-size: 15px;
+  width: 95%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-image: url("../src/icons/search_icon.png");
+  background-repeat: no-repeat;
+  background-size: 20px;
+  padding-left: 25px;
+  border: 1px solid #38023b;
 }

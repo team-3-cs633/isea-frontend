@@ -28,15 +28,13 @@ export default function SearchBar(props) {
 
   return (
     <div className="search-form-grid">
-      <span>
-        {" "}
-        <b>Search:</b>
-      </span>
+      <span> </span>
       <span>
         <input
           className="search-input"
           type="text"
           value={formField}
+          placeholder="Search"
           onChange={(event) => handleUpdateOnSearch(event.target.value)}
         />
       </span>

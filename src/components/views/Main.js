@@ -83,6 +83,23 @@ export default function Main() {
   }, [events]);
 
   /**
+   * Update the selected id, unless its already selected, then unselect it.
+   *
+   * @param {*} id the id of the event button clicked
+   */
+  function handleSelectedIdChangeOnClick(id) {
+    let value;
+
+    if (id === selectedId) {
+      value = null;
+    } else {
+      value = id;
+    }
+
+    handleSelectedIdChange(value);
+  }
+
+  /**
    * Update the event list.
    *
    * @param {*} data the events array to update
@@ -473,7 +490,7 @@ export default function Main() {
           metrics={metrics}
           registrations={registrations}
           favorites={favorites}
-          handleSelectedIdChange={handleSelectedIdChange}
+          handleSelectedIdChange={handleSelectedIdChangeOnClick}
           handleRegisterForEvent={handleRegisterForEvent}
           handleFavoriteEvent={handleFavoriteEvent}
           handleShareEvent={handleShareEvent}
@@ -500,7 +517,7 @@ export default function Main() {
           events={coordinatorEvents}
           selectedId={selectedId}
           handleRemoveEvent={handleRemoveEvent}
-          handleSelectedIdChange={handleSelectedIdChange}
+          handleSelectedIdChange={handleSelectedIdChangeOnClick}
           handleCreateEventFormSubmit={handleCreateEventFormSubmit}
           handleUpdateEvent={handleUpdateEvent}
         />
@@ -516,7 +533,7 @@ export default function Main() {
             Logout
           </button>
         </div>
-        <div>
+        <div className="search-grid-cell">
           <SearchBar
             handleUpdateOnSearch={handleUpdateEventsList}
             resetSearch={resetSearch}

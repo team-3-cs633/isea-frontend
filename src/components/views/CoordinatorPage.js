@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import ManageEventsList from "../events/ManageEventsList";
 import EventForm from "../events/EventForm";
+import createIcon from "../../icons/create_icon.png";
+import updateIcon from "../../icons/update_icon.png";
 import "./views.css";
 
 /**
@@ -63,22 +65,28 @@ export default function CoordinatorPage(props) {
   }
 
   return (
-    <div className="">
+    <div className="view-top-nav-grid">
       <div className="two-button-column">
         <button
-          className="nav-button"
+          className={
+            page === "createEvent" ? "nav-button clicked" : "nav-button"
+          }
           onClick={() => handlePageUpdate("createEvent")}
         >
-          Create Event
+          <img src={createIcon} alt="create" width="15" height="15" />
+          <div>Create Event</div>
         </button>
         <button
-          className="nav-button"
+          className={
+            page === "manageEvent" ? "nav-button clicked" : "nav-button"
+          }
           onClick={() => handlePageUpdate("manageEvent")}
         >
-          Manage Events
+          <img src={updateIcon} alt="update" width="15" height="15" />
+          <div>Manage Events</div>
         </button>
       </div>
-      {displayPage()}
+      <div>{displayPage()}</div>
     </div>
   );
 }

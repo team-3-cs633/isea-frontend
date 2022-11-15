@@ -1,0 +1,50 @@
+.users-display-grid {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-areas: "name role metric";
+  text-align: center;
+}
+
+.user-name-display {
+  grid-area: name;
+}
+
+.user-role-display {
+  grid-area: role;
+}
+
+.user-role-display.admin {
+  grid-area: role;
+  color: #c24758;
+}
+
+.user-role-display.coordinator {
+  grid-area: role;
+  color: blue;
+}
+
+.user-role-display.user {
+  grid-area: role;
+}
+
+.user-metric-display {
+  grid-area: metric;
+}
+
+.user-role-display.user:hover {
+  color: #aec3b0;
+}
+
+.user-role-display.coordinator:hover {
+  color: #aec3b0;
+}
+
+.admin-display {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #ffffff;
+}
+
+.admin-display:hover {
+  color: inherit;
+}
